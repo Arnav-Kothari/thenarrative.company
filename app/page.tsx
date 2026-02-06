@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 export default function Home() {
-  const [activeSection, setActiveSection] = useState<"thesis" | "about" | null>(null);
+  const [activeSection, setActiveSection] = useState<"thesis" | "about" | null>("thesis");
 
   return (
     <div className="min-h-screen bg-white">
