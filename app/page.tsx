@@ -454,6 +454,10 @@ export default function Home() {
                 <p>
                   Not polished. Not over-managed.
                 </p>
+
+                <p className="mt-12">
+                  Talk to us by <a href="mailto:aadit@thenarrative.company" className="text-blue-600 underline hover:text-blue-800">email</a>
+                </p>
               </div>
             )}
 
@@ -463,7 +467,7 @@ export default function Home() {
                   <span className="font-semibold">Aadit:</span> writes about software and generates 1B views a year on X and LinkedIn.
                 </p>
                 <p>
-                  <span className="font-semibold">Arnav:</span> builds software products in his family business, which generate $20M a year in revenue for the company.
+                  <span className="font-semibold">Arnav:</span> built software inside a legacy family business, generating $20M a year in revenue.
                 </p>
                 <p>
                   <span className="font-semibold">Together:</span> we want to give builders a voice inside their companies.
@@ -473,6 +477,14 @@ export default function Home() {
                   alt="Aadit and Arnav"
                   className="w-full max-w-md mx-auto rounded-lg mt-8"
                 />
+
+                <p className="mt-8">
+                  We work with Fortune 100–500 technology companies to help them capture the gap between value and mindshare.
+                </p>
+
+                <p className="mt-12">
+                  Talk to us by <a href="mailto:aadit@thenarrative.company" className="text-blue-600 underline hover:text-blue-800">email</a>
+                </p>
               </div>
             )}
           </article>
