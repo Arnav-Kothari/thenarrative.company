@@ -194,12 +194,12 @@
       </div>
       <div class="card good">
         <div class="card-label">Strong comment sentiment</div>
-        <div class="card-value" style="color:var(--accent)">2.4:1</div>
+        <div class="card-value" style="color:var(--accent)">2:1</div>
         <div class="card-sub">Positive-to-negative ratio — #3 in the set</div>
         <div style="margin-top:16px">
-          <div class="card-row"><span>16.4% positive</span><span>vs. 6.7% negative</span></div>
-          <div class="card-row"><span>vs. Nadella</span><span>1.4:1 ratio</span></div>
-          <div class="card-row"><span>vs. Collison</span><span>1.8:1 ratio</span></div>
+          <div class="card-row"><span>16% positive</span><span>vs. 7% negative</span></div>
+          <div class="card-row"><span>vs. Nadella</span><span>1:1 ratio</span></div>
+          <div class="card-row"><span>vs. Collison</span><span>2:1 ratio</span></div>
         </div>
       </div>
       <div class="card good">
@@ -407,7 +407,7 @@
         </div>
         <ul>
           <li><strong>Actively replies to his own comments</strong> — 25 reply comments in the data set, far more than any other CEO. This likely boosts algorithmic reach and builds community loyalty.</li>
-          <li>Highest positive comment sentiment (17.9%) and lowest negative (5.5%) — the warmest audience of any CEO</li>
+          <li>Highest positive comment sentiment (18%) and lowest negative (6%) — the warmest audience of any CEO</li>
           <li>Cultural content breaks through massively — India cricket World Cup post hit 100K+ likes</li>
           <li>Long, substantive posts outperform his short ones (1.55% vs 0.98% ER)</li>
         </ul>
@@ -443,7 +443,7 @@
         </div>
         <ul>
           <li><strong>#2 engagement rate in the set</strong> despite the lowest reach (7K median views) — proves ER and reach are different levers</li>
-          <li>Best comment sentiment by far — 23.7% positive, only 4.1% negative (5.8:1 ratio). His audience is deeply loyal.</li>
+          <li>Best comment sentiment by far — 24% positive, only 4% negative (6:1 ratio). His audience is deeply loyal.</li>
           <li>Heavy hashtag user (70% of posts) — motivational, leadership-focused content that drives community engagement</li>
           <li>Similar posting cadence to Marc (0.5/wk) but with 47 posts vs 49 — the comparable volume makes the ER gap more striking</li>
         </ul>
@@ -482,12 +482,12 @@
       <div class="card good">
         <div class="card-label">Comment sentiment</div>
         <div class="card-value" style="color:var(--accent)">#3 of 5</div>
-        <div class="card-sub">2.4:1 positive-to-negative ratio</div>
+        <div class="card-sub">2:1 positive-to-negative ratio</div>
         <div style="margin-top:12px">
-          <div class="card-row"><span>McDermott</span><span style="color:var(--accent)">5.8:1</span></div>
-          <div class="card-row"><span>Pichai</span><span>3.3:1</span></div>
-          <div class="card-row"><span style="color:var(--accent)">Benioff</span><span>2.4:1</span></div>
-          <div class="card-row"><span>Nadella</span><span style="color:var(--warn)">1.4:1</span></div>
+          <div class="card-row"><span>McDermott</span><span style="color:var(--accent)">6:1</span></div>
+          <div class="card-row"><span>Pichai</span><span>3:1</span></div>
+          <div class="card-row"><span style="color:var(--accent)">Benioff</span><span>2:1</span></div>
+          <div class="card-row"><span>Nadella</span><span style="color:var(--warn)">1:1</span></div>
         </div>
       </div>
       <div class="card warn">
@@ -572,7 +572,7 @@
       <div class="rec">
         <div class="rec-num">02</div>
         <div class="rec-title">Reply to your own comment sections</div>
-        <div class="rec-desc">Pichai replies to 25 of his own comment threads — more than any other CEO. He also has the highest ER (1.39%) and best sentiment (17.9% positive, 5.5% negative). Engaging in the replies likely boosts algorithmic distribution and builds community loyalty. Marc has 5 replies in the data — there's room to 5x this.</div>
+        <div class="rec-desc">Pichai replies to 25 of his own comment threads — more than any other CEO. He also has the highest ER (1.39%) and best sentiment (18% positive, 6% negative). Engaging in the replies likely boosts algorithmic distribution and builds community loyalty. Marc has 5 replies in the data — there's room to 5x this.</div>
       </div>
       <div class="rec">
         <div class="rec-num">03</div>
@@ -710,8 +710,8 @@ new Chart(document.getElementById('sentimentChart'), {
   data: {
     labels: ['Collison', 'Nadella', 'Benioff', 'Pichai', 'McDermott'],
     datasets: [
-      { label: 'Positive %', data: [12.2, 14.1, 16.4, 17.9, 23.7], backgroundColor: '#C96A2B', borderRadius: 0, barThickness: 32 },
-      { label: 'Negative %', data: [6.8, 10.0, 6.7, 5.5, 4.1], backgroundColor: '#B8564F', borderRadius: 0, barThickness: 32 }
+      { label: 'Positive %', data: [12, 14, 16, 18, 24], backgroundColor: '#C96A2B', borderRadius: 0, barThickness: 32 },
+      { label: 'Negative %', data: [7, 10, 7, 6, 4], backgroundColor: '#B8564F', borderRadius: 0, barThickness: 32 }
     ]
   },
   options: {
