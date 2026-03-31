@@ -581,6 +581,7 @@ new Chart(document.getElementById('erChart'), {
   },
   options: {
     indexAxis: 'y', responsive: true, maintainAspectRatio: true, aspectRatio: 2.2,
+    layout: { padding: { left: 8 } },
     scales: {
       x: { grid: { color: 'rgba(21,19,14,0.06)' }, ticks: { callback: v => v + '%' }, border: { display: false } },
       y: { grid: { display: false }, border: { display: false }, ticks: { font: { weight: 500, size: 14 } } }
