@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marc Benioff Social Engagement - Q2 Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #F6F1E9; --bg-2: #EDE7DB;
+    --text: #15130E; --text-2: #6B6157; --text-3: #A39888;
+    --accent: #C96A2B; --accent-dark: #B05A22;
+    --accent-glow: rgba(201,106,43,0.08); --accent-border: rgba(201,106,43,0.25);
+    --border: #DDD7CC; --card: #EDE7DB;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', -apple-system, sans-serif; font-weight: 300; background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 900px; margin: 0 auto; padding: 0 40px; }
+
+  /* KATHA HEADER */
+  .katha-header { padding: 32px 0; border-bottom: 1px solid var(--border); }
+  .katha-header .container { display: flex; justify-content: space-between; align-items: center; }
+  .katha-logo { position: relative; display: inline-block; font-family: 'Inter', sans-serif; font-weight: 400; font-size: 14px; letter-spacing: 0.4em; text-transform: uppercase; color: var(--text); padding-top: 10px; }
+  .katha-logo::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: var(--accent); }
+  .katha-header-right { font-size: 11px; color: var(--text-2); letter-spacing: 0.14em; text-transform: uppercase; }
+
+  /* HERO */
+  .hero { min-height: 70vh; display: flex; flex-direction: column; justify-content: center; padding: 80px 0; position: relative; }
+  .hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: var(--border); }
+  .badge { display: inline-flex; align-items: center; gap: 8px; background: transparent; border: 1px solid var(--accent); border-radius: 0; padding: 6px 16px; font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 32px; width: fit-content; }
+  .hero h1 { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-style: italic; font-size: clamp(36px, 5vw, 60px); line-height: 1.08; letter-spacing: -0.01em; margin-bottom: 24px; max-width: 750px; color: var(--text); }
+  .hero h1 span { color: var(--accent); }
+  .hero-sub { font-size: 17px; font-weight: 300; color: var(--text-2); max-width: 600px; line-height: 1.85; }
+  .hero-meta { display: flex; gap: 32px; margin-top: 48px; flex-wrap: wrap; }
+  .hero-meta-item { font-size: 10px; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.28em; font-weight: 400; }
+  .hero-meta-item strong { display: block; color: var(--text-2); font-weight: 400; font-size: 14px; text-transform: none; letter-spacing: 0; margin-top: 4px; }
+
+  /* SECTIONS */
+  section { padding: 80px 0; position: relative; }
+  section + section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: var(--border); }
+  .label { font-size: 10px; font-weight: 400; text-transform: uppercase; letter-spacing: 0.28em; color: var(--accent); margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+  .label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--accent); }
+  .title { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(26px, 3.2vw, 38px); letter-spacing: -0.01em; margin-bottom: 16px; line-height: 1.15; color: var(--text); }
+  .desc { font-size: 17px; font-weight: 300; color: var(--text-2); max-width: 620px; margin-bottom: 40px; line-height: 1.85; }
+
+  /* CARDS */
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 0; padding: 28px 24px; transition: border-color 0.3s; }
+  .card:hover { border-color: var(--accent); }
+  .card-label { font-size: 10px; font-weight: 400; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.28em; margin-bottom: 16px; }
+  .card-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 500; color: var(--text); margin-bottom: 10px; }
+  .card-desc { font-size: 14px; font-weight: 300; color: var(--text-2); line-height: 1.75; }
+
+  /* FLOW */
+  .flow { display: flex; align-items: center; gap: 0; margin: 32px 0; flex-wrap: wrap; }
+  .flow-step { background: var(--card); border: 1px solid var(--border); padding: 16px 20px; text-align: center; flex: 1; min-width: 120px; }
+  .flow-step-num { font-size: 10px; font-weight: 400; color: var(--accent); text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 6px; }
+  .flow-step-label { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 500; color: var(--text); }
+  .flow-step-desc { font-size: 12px; font-weight: 300; color: var(--text-3); margin-top: 4px; }
+  .flow-arrow { font-size: 18px; color: var(--accent); padding: 0 4px; flex-shrink: 0; }
+
+  /* BULLET LIST */
+  .bullet-list { list-style: none; display: flex; flex-direction: column; gap: 14px; margin: 24px 0; }
+  .bullet-list li { font-size: 15px; font-weight: 300; color: var(--text-2); line-height: 1.75; padding-left: 20px; position: relative; }
+  .bullet-list li::before { content: ''; position: absolute; left: 0; top: 11px; width: 6px; height: 1px; background: var(--accent); }
+  .bullet-list li strong { font-weight: 500; color: var(--text); }
+
+  /* GRID */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 24px 0; }
+
+  /* ENGAGEMENT TABLE */
+  .scale-table { width: 100%; border-collapse: collapse; margin: 32px 0; }
+  .scale-table th { font-size: 10px; font-weight: 400; text-transform: uppercase; letter-spacing: 0.2em; color: var(--text-3); text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--border); }
+  .scale-table td { font-size: 15px; font-weight: 300; color: var(--text-2); padding: 14px 16px; border-bottom: 1px solid var(--border); }
+  .scale-table td:first-child { font-weight: 400; color: var(--text); }
+  .scale-table td.accent-val { font-weight: 500; color: var(--accent); font-family: 'Inter', sans-serif; }
+  .scale-table tr:last-child td { border-bottom: none; }
+
+  /* NOTE */
+  .note { font-size: 15px; font-weight: 300; color: var(--text-2); margin-top: 24px; max-width: 640px; line-height: 1.85; }
+
+  /* BOTTOM */
+  .bottom { text-align: center; padding: 100px 0; }
+  .bottom p { font-family: 'Cormorant Garamond', serif; font-size: clamp(20px, 2.8vw, 28px); font-weight: 400; line-height: 1.55; max-width: 650px; margin: 0 auto; color: var(--text-2); }
+  .bottom p strong { color: var(--text); font-weight: 500; }
+
+  footer { padding: 40px 0; text-align: center; font-size: 11px; color: var(--text-3); border-top: 1px solid var(--border); letter-spacing: 0.06em; }
+  footer span.accent { color: var(--accent); }
+
+  .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* SUB-SECTION TITLE */
+  .sub-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 500; color: var(--text); margin-bottom: 12px; margin-top: 32px; }
+
+  @media (max-width: 900px) {
+    .container { padding: 0 24px; }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .flow { flex-direction: column; align-items: stretch; }
+    .flow-arrow { transform: rotate(90deg); text-align: center; padding: 4px 0; }
+  }
+  @media (max-width: 600px) {
+    section { padding: 56px 0; }
+    .hero { min-height: auto; padding: 56px 0; }
+    .hero-meta { gap: 20px; }
+    .scale-table { font-size: 13px; }
+    .scale-table th, .scale-table td { padding: 10px 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- KATHA HEADER -->
+<nav class="katha-header">
+  <div class="container">
+    <span class="katha-logo">Katha</span>
+    <span class="katha-header-right">Social Engagement Plan</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container">
+    <div class="badge">Q2 2026</div>
+    <h1><span>Marc Benioff</span><br>Social Engagement Plan</h1>
+    <p class="hero-sub">Five workstreams to increase reach, deepen engagement, and build a repeatable system around every moment - across X and LinkedIn.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">Engagement Period<strong>April 6 - June 30, 2026</strong></div>
+      <div class="hero-meta-item">Renewal<strong>Rolling quarterly</strong></div>
+      <div class="hero-meta-item">Platforms<strong>X + LinkedIn</strong></div>
+      <div class="hero-meta-item">Prepared by<strong>The Narrative Company</strong></div>
+    </div>
+  </div>
+</header>
+
+<!-- 1. MOMENTS -->
+<section>
+  <div class="container">
+    <div class="label fade-in">Workstream 01</div>
+    <h2 class="title fade-in">Moments</h2>
+    <p class="desc fade-in">Two coordinated, high-impact posts per month across X and LinkedIn. Each moment is a single long-form post or X article - not a thread. Amplification is built in from the start.</p>
+
+    <div class="flow fade-in">
+      <div class="flow-step">
+        <div class="flow-step-num">01</div>
+        <div class="flow-step-label">Source</div>
+        <div class="flow-step-desc">Identify the topic, angle, and timing</div>
+      </div>
+      <div class="flow-arrow">&rarr;</div>
+      <div class="flow-step">
+        <div class="flow-step-num">02</div>
+        <div class="flow-step-label">Build</div>
+        <div class="flow-step-desc">Draft post for both platforms</div>
+      </div>
+      <div class="flow-arrow">&rarr;</div>
+      <div class="flow-step">
+        <div class="flow-step-num">03</div>
+        <div class="flow-step-label">Approve</div>
+        <div class="flow-step-desc">Route through Carly for sign-off</div>
+      </div>
+      <div class="flow-arrow">&rarr;</div>
+      <div class="flow-step">
+        <div class="flow-step-num">04</div>
+        <div class="flow-step-label">Amplify</div>
+        <div class="flow-step-desc">Exec + corporate cascade fires on publish</div>
+      </div>
+    </div>
+
+    <ul class="bullet-list fade-in">
+      <li><strong>Format:</strong> Single long-form posts or X articles - no threads</li>
+      <li><strong>Cadence:</strong> 2 moments per month, coordinated across both platforms</li>
+      <li><strong>Coordination:</strong> Each moment spans X and LinkedIn simultaneously with platform-native copy</li>
+      <li><strong>Amplification:</strong> Every moment ships with a pre-built amplification plan (see Workstream 03)</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 2. LINKEDIN -->
+<section>
+  <div class="container">
+    <div class="label fade-in">Workstream 02</div>
+    <h2 class="title fade-in">LinkedIn - Own the Channel</h2>
+    <p class="desc fade-in">Full operational control, no bottleneck. The goal is to make Marc's LinkedIn a living presence - not just posts, but strategic commenting, reposting, and high-value engagements that pull influential people into his orbit.</p>
+
+    <ul class="bullet-list fade-in">
+      <li><strong>Commenting + reposting:</strong> High-value engagements on customer posts, peer CEO content, and industry-shaping moments - every ~2 weeks</li>
+      <li><strong>Original posts:</strong> Weekly cadence, coordinated with the broader moment calendar</li>
+      <li><strong>Pipeline:</strong> Software surfaces opportunities, we draft + send for approval</li>
+      <li><strong>Targets:</strong> Customers, influential CEOs, industry voices - people who grow Marc's network</li>
+    </ul>
+
+    <div class="grid-2 fade-in">
+      <div class="card">
+        <div class="card-label">The opportunity</div>
+        <div class="card-title">Full operational control</div>
+        <div class="card-desc">We can move fast, test, and iterate. LinkedIn becomes our growth engine between major moments.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">The strategy</div>
+        <div class="card-title">Beyond posting</div>
+        <div class="card-desc">Comments and reposts on the right content drive more growth than original posts alone. We want Marc's LinkedIn to feel active, not just published to.</div>
+      </div>
+    </div>
+
+    <div class="sub-title fade-in">Success Metrics</div>
+    <ul class="bullet-list fade-in">
+      <li><strong>Follower growth:</strong> 25% increase over current baseline growth rate</li>
+      <li><strong>Engagement per post:</strong> Measurable lift on posts we produce vs. historical average</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 3. AMPLIFICATION -->
+<section>
+  <div class="container">
+    <div class="label fade-in">Workstream 03</div>
+    <h2 class="title fade-in">Amplification - Standardized Pipeline</h2>
+    <p class="desc fade-in">Amplification becomes a checklist, not a fire drill. Every moment ships with a pre-built cascade - exec engagement, corporate handles, and internal activation all coordinated before publish.</p>
+
+    <div class="sub-title fade-in">Executive Amplification</div>
+    <ul class="bullet-list fade-in">
+      <li><strong>3-4 execs locked in for every moment</strong> - a consistent core group so we can go deeper in their comms cycles</li>
+      <li><strong>Direct comms relationships</strong> - we coordinate directly with their teams, not through layers</li>
+      <li><strong>Exec amplification leans LinkedIn</strong> - strongest platform, most control</li>
+      <li><strong>Mutual value:</strong> Marc reposts their content too - the pitch is that this benefits both sides</li>
+    </ul>
+
+    <div class="sub-title fade-in">Corporate + Product Handles</div>
+    <ul class="bullet-list fade-in">
+      <li><strong>Ad hoc per moment</strong> - we coordinate corporate handles when the moment calls for it</li>
+      <li><strong>Corporate handles lean X</strong> - where brand accounts have the most reach</li>
+      <li><strong>Slack activation on every moment</strong> - organic employee engagement</li>
+    </ul>
+
+    <div class="grid-3 fade-in" style="margin-top: 32px;">
+      <div class="card">
+        <div class="card-label">Exec cascade</div>
+        <div class="card-title">3-4 per moment</div>
+        <div class="card-desc">Consistent group with direct comms relationships. LinkedIn-first.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Corporate handles</div>
+        <div class="card-title">Ad hoc coordination</div>
+        <div class="card-desc">Coordinated when the moment calls for it. X-first.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Internal activation</div>
+        <div class="card-title">Slack on every moment</div>
+        <div class="card-desc">Coordinated push for organic employee engagement.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. ANALYTICS -->
+<section>
+  <div class="container">
+    <div class="label fade-in">Workstream 04</div>
+    <h2 class="title fade-in">Analytics - Competitive Intelligence</h2>
+    <p class="desc fade-in">Expanded competitive analysis, continuous insights fed back in real time, and a quarterly report that shows the impact of the work.</p>
+
+    <ul class="bullet-list fade-in">
+      <li><strong>Custom-built intelligence layer:</strong> A proprietary dataset of the 10,000 most influential profiles in the ecosystem - live, filtered, and continuously updated</li>
+      <li><strong>Expanded competitive set:</strong> Bigger batch of CEO and corporate handles for benchmarking</li>
+      <li><strong>Continuous insights:</strong> Post length, timing, and topic recommendations fed back in real time</li>
+      <li><strong>Quarterly report + walkthrough:</strong> Moment analysis, benchmarking, trends, and forward-looking recommendations</li>
+      <li><strong>Shared data:</strong> Reports shared with the team - and eventually with Marc</li>
+    </ul>
+
+    <div class="grid-2 fade-in">
+      <div class="card">
+        <div class="card-label">Continuous</div>
+        <div class="card-title">Real-time feedback loop</div>
+        <div class="card-desc">Performance data, competitive signals, and recommendations shared as they happen - not saved for a quarterly deck.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Quarterly</div>
+        <div class="card-title">Full report + walkthrough</div>
+        <div class="card-desc">Moment analysis, peer CEO benchmarking, trend spotting, and what to do next.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. X COMMENTING -->
+<section>
+  <div class="container">
+    <div class="label fade-in">Workstream 05</div>
+    <h2 class="title fade-in">X Commenting - Opportunistic</h2>
+    <p class="desc fade-in">A low-friction pipeline for surfacing the highest-value comment opportunities on X. We surface fewer, better-justified opportunities so the ones that land have the highest chance of being acted on.</p>
+
+    <div class="flow fade-in">
+      <div class="flow-step">
+        <div class="flow-step-num">01</div>
+        <div class="flow-step-label">Flag</div>
+        <div class="flow-step-desc">Software identifies opportunity</div>
+      </div>
+      <div class="flow-arrow">&rarr;</div>
+      <div class="flow-step">
+        <div class="flow-step-num">02</div>
+        <div class="flow-step-label">Draft</div>
+        <div class="flow-step-desc">Comment + justification written</div>
+      </div>
+      <div class="flow-arrow">&rarr;</div>
+      <div class="flow-step">
+        <div class="flow-step-num">03</div>
+        <div class="flow-step-label">Raise</div>
+        <div class="flow-step-desc">Surface in Slack</div>
+      </div>
+      <div class="flow-arrow">&rarr;</div>
+      <div class="flow-step">
+        <div class="flow-step-num">04</div>
+        <div class="flow-step-label">Float</div>
+        <div class="flow-step-desc">Carly raises to Marc</div>
+      </div>
+    </div>
+
+    <ul class="bullet-list fade-in">
+      <li><strong>Cadence:</strong> A few high-quality opportunities per month - less frequent, better justified</li>
+      <li><strong>Bar:</strong> Every opportunity ships with a draft comment and clear justification</li>
+      <li><strong>Expectation:</strong> Marc may or may not engage - the pipeline builds trust by being consistently worth his time</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ENGAGEMENT STRUCTURE -->
+<section>
+  <div class="container">
+    <div class="label fade-in">Engagement Structure</div>
+    <h2 class="title fade-in">What the rhythm looks like</h2>
+    <p class="desc fade-in">A summary of cadences, deliverables, and the engagement timeline.</p>
+
+    <table class="scale-table fade-in">
+      <thead>
+        <tr>
+          <th>Activity</th>
+          <th>Cadence</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Moments (X + LinkedIn)</td>
+          <td class="accent-val">2 / month</td>
+        </tr>
+        <tr>
+          <td>LinkedIn commenting / reposting</td>
+          <td class="accent-val">Biweekly</td>
+        </tr>
+        <tr>
+          <td>LinkedIn original posts</td>
+          <td class="accent-val">Weekly</td>
+        </tr>
+        <tr>
+          <td>Cadence calls</td>
+          <td class="accent-val">Weekly</td>
+        </tr>
+        <tr>
+          <td>X commenting opportunities</td>
+          <td class="accent-val">As warranted</td>
+        </tr>
+        <tr>
+          <td>Analytics report + walkthrough</td>
+          <td class="accent-val">Quarterly</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="grid-2 fade-in" style="margin-top: 16px;">
+      <div class="card">
+        <div class="card-label">Q2 2026</div>
+        <div class="card-title">April 6 - June 30, 2026</div>
+        <div class="card-desc">Initial quarterly engagement with analytics report and walkthrough at close.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Renewal</div>
+        <div class="card-title">Rolling quarterly</div>
+        <div class="card-desc">Engagement auto-renews each quarter unless either party requests termination.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOTTOM LINE -->
+<section class="bottom">
+  <div class="container">
+    <p class="fade-in">
+      <strong>Five workstreams. One system.</strong><br><br>
+      Moments that hit. A LinkedIn channel we own.<br>
+      Amplification that runs like a checklist.<br>
+      Data that sharpens every decision.<br>
+      And a comment pipeline that builds trust over time.<br><br>
+      <strong>This is the plan.</strong>
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <span class="accent">The Narrative Company</span> &middot; Q2 Social Engagement Plan &middot; April 2026
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.15 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
