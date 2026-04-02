@@ -1,0 +1,119 @@
+/* ─── ROADMAP PAGE ───────────────────────────── */
+.roadmap-page {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-weight: 300;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.roadmap-page .container { max-width: 1160px; margin: 0 auto; padding: 0 40px; }
+
+/* HEADER */
+.katha-header { padding: 32px 0; border-bottom: 1px solid var(--border); }
+.katha-header .container { display: flex; justify-content: space-between; align-items: center; }
+.katha-logo { position: relative; display: inline-block; font-family: 'Inter', sans-serif; font-weight: 400; font-size: 14px; letter-spacing: 0.4em; text-transform: uppercase; color: var(--text); padding-top: 10px; text-decoration: none; }
+.katha-logo::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: var(--accent); }
+.katha-header-right { font-size: 11px; color: var(--text-2); letter-spacing: 0.14em; text-transform: uppercase; }
+
+/* HERO */
+.roadmap-page .rm-hero { padding: 100px 0 80px; position: relative; }
+.roadmap-page .rm-hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: var(--border); }
+.badge { display: inline-flex; align-items: center; gap: 8px; background: transparent; border: 1px solid var(--accent); padding: 6px 16px; font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 32px; width: fit-content; }
+.roadmap-page .rm-hero h1 { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-style: italic; font-size: clamp(40px, 5.5vw, 68px); line-height: 1.05; letter-spacing: -0.01em; margin-bottom: 24px; max-width: 800px; color: var(--text); }
+.roadmap-page .rm-hero h1 span { color: var(--accent); }
+.hero-sub { font-size: 17px; font-weight: 300; color: var(--text-2); max-width: 560px; line-height: 1.85; }
+.hero-meta { display: flex; gap: 48px; margin-top: 48px; flex-wrap: wrap; }
+.hero-meta-item { font-size: 10px; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.28em; font-weight: 400; }
+.hero-meta-item strong { display: block; color: var(--text); font-weight: 500; font-size: 28px; text-transform: none; letter-spacing: -0.02em; margin-top: 6px; font-family: 'Inter', sans-serif; }
+
+/* SECTIONS */
+.roadmap-page section { padding: 100px 0; position: relative; }
+.roadmap-page section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: var(--border); }
+.label { font-size: 10px; font-weight: 400; text-transform: uppercase; letter-spacing: 0.28em; color: var(--accent); margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+.label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--accent); }
+.title { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(28px, 3.5vw, 42px); letter-spacing: -0.01em; margin-bottom: 16px; line-height: 1.15; color: var(--text); }
+.desc { font-size: 17px; font-weight: 300; color: var(--text-2); max-width: 620px; margin-bottom: 48px; line-height: 1.85; }
+
+/* TIMELINE */
+.timeline-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; }
+.timeline-grid::before { content: ''; position: absolute; top: 20px; left: 0; right: 0; height: 1px; background: var(--border); }
+
+.quarter { position: relative; padding: 0 12px; }
+.quarter::before { content: ''; position: absolute; top: 14px; left: 50%; width: 12px; height: 12px; margin-left: -6px; background: var(--bg); border: 1px solid var(--border); border-radius: 0; z-index: 1; }
+.quarter.done::before { background: var(--sage); border-color: var(--sage); }
+.quarter.active::before { background: var(--bg); border-color: var(--accent); }
+
+.quarter-header { text-align: center; padding-top: 48px; margin-bottom: 32px; }
+.quarter-label { font-size: 10px; font-weight: 400; text-transform: uppercase; letter-spacing: 0.28em; color: var(--text-3); margin-bottom: 4px; }
+.quarter-months { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 500; color: var(--text); letter-spacing: -0.01em; }
+.quarter.done .quarter-label { color: var(--sage); }
+
+.tasks { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+
+/* DEFAULT */
+.task { background: var(--card); border: 1px solid var(--border); padding: 20px 18px; transition: border-color 0.3s; }
+.task:hover { border-color: var(--text-3); }
+
+/* SAGE - positive, done */
+.task.done { border-color: var(--sage-border); background: var(--sage-glow); }
+.task.done .task-tag { color: var(--sage); }
+.task.done .task-body { color: var(--text); }
+
+/* CLAY - risk */
+.task.risk { border-color: var(--clay-border); background: var(--clay-glow); }
+.task.risk .task-tag { color: var(--clay); }
+.task.risk .task-body { color: var(--text); }
+
+/* AMBER - critical unlock */
+.task.critical { border-color: var(--accent-border); background: var(--accent-glow); }
+.task.critical .task-tag { color: var(--accent); }
+.task.critical .task-body { color: var(--text); }
+
+/* STEEL - neutral, in progress */
+.task.info { border-color: var(--steel-border); background: var(--steel-glow); }
+.task.info .task-tag { color: var(--steel); }
+.task.info .task-body { color: var(--text); }
+
+/* PLUM - people, team */
+.task.team { border-color: var(--plum-border); background: var(--plum-glow); }
+.task.team .task-tag { color: var(--plum); }
+.task.team .task-body { color: var(--text); }
+
+.task-tag { font-size: 10px; font-weight: 400; text-transform: uppercase; letter-spacing: 0.28em; margin-bottom: 8px; color: var(--text-3); }
+.task-body { font-size: 14px; font-weight: 300; color: var(--text-2); line-height: 1.6; }
+
+/* BOTTOM */
+.bottom { text-align: center; padding: 100px 0; position: relative; }
+.bottom::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: var(--border); }
+.bottom p { font-family: 'Cormorant Garamond', serif; font-size: clamp(22px, 3vw, 32px); font-weight: 400; font-style: italic; line-height: 1.5; max-width: 600px; margin: 0 auto; color: var(--text-2); }
+.bottom p strong { color: var(--accent); font-weight: 500; }
+
+.roadmap-page footer { padding: 40px 0; text-align: center; font-size: 11px; color: var(--text-3); border-top: 1px solid var(--border); letter-spacing: 0.06em; }
+.roadmap-page footer .accent { color: var(--accent); }
+
+/* FADE IN */
+.fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .roadmap-page .container { padding: 0 24px; }
+  .timeline-grid { grid-template-columns: 1fr; gap: 0; }
+  .timeline-grid::before { display: none; }
+  .quarter::before { display: none; }
+  .quarter { padding: 0; border-bottom: 1px solid var(--border); padding-bottom: 48px; margin-bottom: 48px; }
+  .quarter:last-child { border-bottom: none; margin-bottom: 0; }
+  .quarter-header { padding-top: 0; }
+  .hero-meta { gap: 32px; }
+}
+
+@media (max-width: 600px) {
+  .roadmap-page section { padding: 64px 0; }
+  .roadmap-page .rm-hero { padding: 64px 0 56px; }
+}
+
+@media print {
+  .roadmap-page { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
