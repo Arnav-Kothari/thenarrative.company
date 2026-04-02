@@ -818,7 +818,7 @@
     <h3 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:28px;margin-bottom:16px;color:var(--text);">How to Assign Color</h3>
 
     <p style="font-size:14px;font-weight:300;color:var(--text-2);max-width:680px;line-height:1.85;margin-bottom:32px;">
-        For every card on a page, walk through these three questions in order.
+        Start with Step 0. If the entity already has a color, stop - you're done. Only use Steps 1-3 to decide what that color should be the first time an entity appears.
     </p>
 
     <table class="scale-table" style="margin-bottom:64px;">
@@ -831,8 +831,16 @@
         </thead>
         <tbody>
             <tr>
+                <td style="color:var(--accent);font-weight:500;font-size:16px;">0</td>
+                <td style="color:var(--text);font-weight:500;">Does this entity already have a color on this page?<br><span style="font-weight:300;color:var(--text-2);font-size:12px;">Same name = same color. Always. If "Salesforce" is sage on one card, every Salesforce card is sage. No exceptions.</span></td>
+                <td style="color:var(--text-2);">
+                    Use the color already assigned. <strong style="color:var(--text);font-weight:500;">Do not re-evaluate.</strong> The color was chosen based on what the entity represents overall, not what any individual card says. A Salesforce card is sage whether it says "pilot completed" or "scope expansion" - because Salesforce is the anchor client and that's a positive thing.<br><br>
+                    <span style="font-size:12px;">Only proceed to Steps 1-3 if this is the first time the entity appears and you need to decide its color.</span>
+                </td>
+            </tr>
+            <tr>
                 <td style="color:var(--accent);font-weight:500;font-size:16px;">1</td>
-                <td style="color:var(--text);font-weight:500;">Does this card carry a judgment?<br><span style="font-weight:300;color:var(--text-2);font-size:12px;">Is the outcome good, bad, or the single most critical move?</span></td>
+                <td style="color:var(--text);font-weight:500;">Does this entity carry a judgment overall?<br><span style="font-weight:300;color:var(--text-2);font-size:12px;">Looking at everything this entity represents across the whole page - is it positive, negative, or the critical unlock?</span></td>
                 <td style="color:var(--text-2);">
                     Good outcome = <strong style="color:#5B8C5A;">sage</strong><br>
                     Bad outcome / risk = <strong style="color:#B8564F;">clay</strong><br>
@@ -936,8 +944,8 @@
                 <td style="color:var(--text-2);">Amber is the brand accent - it already appears on labels, buttons, and section markers. When it also appears on a functional card, it must mean "this is the single critical unlock." If three things are amber, nothing is critical. Reserve it ruthlessly.</td>
             </tr>
             <tr>
-                <td style="color:var(--text);font-weight:500;">One color per entity, everywhere.</td>
-                <td style="color:var(--text-2);">If "Salesforce" is sage on slide 3, it is sage on slide 17 - assuming the meaning hasn't changed. If the same entity appears in different states (done in Q1, at-risk in Q3), the color changes because the meaning changed, not the entity.</td>
+                <td style="color:var(--text);font-weight:500;">Same name, same color. No exceptions.</td>
+                <td style="color:var(--text-2);">If "Salesforce" is sage on one card, every Salesforce card on the page is sage. The color is assigned to the entity, not the individual card. Pick the color based on what the entity represents overall - its role in the story - and lock it in. This overrides any per-card judgment.</td>
             </tr>
             <tr>
                 <td style="color:var(--text);font-weight:500;">Max 4-5 colors per page.</td>
