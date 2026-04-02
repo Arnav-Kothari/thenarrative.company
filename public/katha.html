@@ -743,194 +743,172 @@
         The rule is simple: <strong style="color:var(--text);font-weight:500;">if a card or box is colored, a viewer should be able to say why.</strong> Color that cannot be explained is decoration, and decoration in data is noise.
     </p>
 
-    <!-- Functional swatches -->
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:64px;">
-
-        <div class="swatch">
-            <div class="swatch-block" style="background:rgba(91,140,90,0.08);border:1px solid rgba(91,140,90,0.25);display:flex;align-items:flex-end;padding:16px;">
-                <span style="font-size:11px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:#5B8C5A;">Sage</span>
-            </div>
-            <div class="swatch-info">
-                <div class="swatch-name">Sage</div>
-                <div class="swatch-hex">#5B8C5A</div>
-                <div class="swatch-use">Done, achieved, positive outcome, on-track, completed. Use for things that have happened and went well.</div>
-            </div>
-        </div>
-
-        <div class="swatch">
-            <div class="swatch-block" style="background:rgba(201,106,43,0.08);border:1px solid rgba(201,106,43,0.25);display:flex;align-items:flex-end;padding:16px;">
-                <span style="font-size:11px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:#C96A2B;">Amber</span>
-            </div>
-            <div class="swatch-info">
-                <div class="swatch-name">Amber (functional)</div>
-                <div class="swatch-hex">#C96A2B</div>
-                <div class="swatch-use">Critical action, the unlock, the one thing that matters most. The move that makes everything else possible. Also serves as the brand accent.</div>
-            </div>
-        </div>
-
-        <div class="swatch">
-            <div class="swatch-block" style="background:rgba(184,86,79,0.08);border:1px solid rgba(184,86,79,0.25);display:flex;align-items:flex-end;padding:16px;">
-                <span style="font-size:11px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:#B8564F;">Clay</span>
-            </div>
-            <div class="swatch-info">
-                <div class="swatch-name">Clay</div>
-                <div class="swatch-hex">#B8564F</div>
-                <div class="swatch-use">Risk, negative, off-track, blocked, requires action. Use for things that are wrong or could go wrong.</div>
-            </div>
-        </div>
-
-        <div class="swatch">
-            <div class="swatch-block" style="background:rgba(91,127,149,0.08);border:1px solid rgba(91,127,149,0.25);display:flex;align-items:flex-end;padding:16px;">
-                <span style="font-size:11px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:#5B7F95;">Steel</span>
-            </div>
-            <div class="swatch-info">
-                <div class="swatch-name">Steel</div>
-                <div class="swatch-hex">#5B7F95</div>
-                <div class="swatch-use">Informational, in-progress, neutral workflow. No judgment - just "this is happening" or "note this." Use for context that needs visibility but carries no positive or negative weight.</div>
-            </div>
-        </div>
-
-        <div class="swatch">
-            <div class="swatch-block" style="background:rgba(124,90,158,0.08);border:1px solid rgba(124,90,158,0.25);display:flex;align-items:flex-end;padding:16px;">
-                <span style="font-size:11px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:#7C5A9E;">Plum</span>
-            </div>
-            <div class="swatch-info">
-                <div class="swatch-name">Plum</div>
-                <div class="swatch-hex">#7C5A9E</div>
-                <div class="swatch-use">Category: people, team, hiring. Use when distinguishing a type of work from other types, not when making a judgment about it.</div>
-            </div>
-        </div>
-
-        <div class="swatch">
-            <div class="swatch-block" style="background:var(--bg-2);border:1px solid var(--border);display:flex;align-items:flex-end;padding:16px;">
-                <span style="font-size:11px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-3);">Default</span>
-            </div>
-            <div class="swatch-info">
-                <div class="swatch-name">Default (warm cream)</div>
-                <div class="swatch-hex">#EDE7DB</div>
-                <div class="swatch-use">No special meaning. The baseline. Most cards and boxes should be this color. Color is the exception, not the rule.</div>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- Token format -->
-    <h3 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:28px;margin-bottom:32px;color:var(--text);">Token Format</h3>
+    <!-- ─── THE MAP ─────────────────────────────────── -->
+    <h3 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:28px;margin-bottom:16px;color:var(--text);">The Color Map</h3>
 
     <p style="font-size:14px;font-weight:300;color:var(--text-2);max-width:680px;line-height:1.85;margin-bottom:32px;">
-        Every functional color has three forms. The solid color is for text and labels. The glow is for card backgrounds. The border is for card edges. This keeps functional cards visually consistent with the rest of the Katha system.
+        For every card, box, or data element, ask one question: <strong style="color:var(--text);font-weight:500;">what does this communicate to the viewer?</strong> Then pick the color from this map. There are no other considerations - not what quarter it falls in, not what category it belongs to by default, not what looks balanced on the page.
+    </p>
+
+    <table class="scale-table" style="margin-bottom:48px;">
+        <thead>
+            <tr>
+                <th style="width:12%;">Color</th>
+                <th style="width:18%;">Name</th>
+                <th style="width:22%;">Meaning</th>
+                <th style="width:28%;">Use when...</th>
+                <th style="width:20%;">Example</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><span style="display:inline-block;width:32px;height:18px;background:rgba(91,140,90,0.08);border:1px solid rgba(91,140,90,0.25);vertical-align:middle;"></span></td>
+                <td style="color:#5B8C5A;font-weight:500;">Sage</td>
+                <td>Positive. Good. Done.</td>
+                <td style="color:var(--text-2);">The outcome is achieved, the metric is above target, the deal is closed, the thing went well. Past, present, or future - if the card represents a positive outcome, it is sage.</td>
+                <td style="color:var(--text-2);font-size:12px;">"Pilot completed" / "All clients at full rate" / "Revenue above target"</td>
+            </tr>
+            <tr>
+                <td><span style="display:inline-block;width:32px;height:18px;background:rgba(184,86,79,0.08);border:1px solid rgba(184,86,79,0.25);vertical-align:middle;"></span></td>
+                <td style="color:#B8564F;font-weight:500;">Clay</td>
+                <td>Negative. Bad. Risk.</td>
+                <td style="color:var(--text-2);">Something is blocked, off-track, below target, or threatens progress. A problem that needs attention. A gap that could hurt.</td>
+                <td style="color:var(--text-2);font-size:12px;">"Pipeline stalled" / "Metric below target" / "Key dependency blocked"</td>
+            </tr>
+            <tr>
+                <td><span style="display:inline-block;width:32px;height:18px;background:rgba(201,106,43,0.08);border:1px solid rgba(201,106,43,0.25);vertical-align:middle;"></span></td>
+                <td style="color:#C96A2B;font-weight:500;">Amber</td>
+                <td>Critical. The unlock.</td>
+                <td style="color:var(--text-2);">The single highest-leverage move. The thing that, if it happens, makes everything else possible. Use sparingly - amber is also the brand accent, so in functional contexts it should only appear on 1-2 cards per page max. If too many things are amber, nothing is critical.</td>
+                <td style="color:var(--text-2);font-size:12px;">"Close client #2" / "Secure Series A" / "Ship v1"</td>
+            </tr>
+            <tr>
+                <td><span style="display:inline-block;width:32px;height:18px;background:rgba(91,127,149,0.08);border:1px solid rgba(91,127,149,0.25);vertical-align:middle;"></span></td>
+                <td style="color:#5B7F95;font-weight:500;">Steel</td>
+                <td>Neutral. In progress. FYI.</td>
+                <td style="color:var(--text-2);">No judgment yet - work is underway, context worth noting, a data point the viewer should see. Not good, not bad, just happening.</td>
+                <td style="color:var(--text-2);font-size:12px;">"Building case study deck" / "Client #2 ramping" / "Q3 data pending"</td>
+            </tr>
+            <tr>
+                <td><span style="display:inline-block;width:32px;height:18px;background:rgba(124,90,158,0.08);border:1px solid rgba(124,90,158,0.25);vertical-align:middle;"></span></td>
+                <td style="color:#7C5A9E;font-weight:500;">Plum</td>
+                <td>Category: people / team.</td>
+                <td style="color:var(--text-2);">Distinguishes a type of work (hiring, team-building) from other types. No judgment - just identity. For other categories beyond people, assign a color and document it per project.</td>
+                <td style="color:var(--text-2);font-size:12px;">"Hire ops lead" / "Employee #2 - analytics"</td>
+            </tr>
+            <tr>
+                <td><span style="display:inline-block;width:32px;height:18px;background:#EDE7DB;border:1px solid #DDD7CC;vertical-align:middle;"></span></td>
+                <td style="color:var(--text-3);font-weight:500;">Default</td>
+                <td>No special meaning.</td>
+                <td style="color:var(--text-2);">The card exists but carries no judgment, no urgency, no category distinction. Supporting work. Operational follow-through. <strong style="color:var(--text);font-weight:500;">Default is not a safe fallback.</strong> It is a deliberate statement: "this has no special meaning." If the card IS meaningful, it needs a color.</td>
+                <td style="color:var(--text-2);font-size:12px;">Only used when nothing above applies</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- ─── AMBER WARNING ───────────────────────────── -->
+    <div style="background:rgba(201,106,43,0.08);border:1px solid rgba(201,106,43,0.25);padding:28px 24px;margin-bottom:64px;">
+        <div style="font-size:10px;font-weight:400;text-transform:uppercase;letter-spacing:0.28em;color:#C96A2B;margin-bottom:12px;">Note on amber</div>
+        <p style="font-size:14px;font-weight:300;color:var(--text);line-height:1.7;">
+            Amber is Katha's primary brand color. It already appears on labels, CTAs, eyebrows, and section markers across every page. When amber is also used as a functional color on cards, it must clearly mean "this is the critical unlock" - not just "this is important" or "this needs emphasis." If a page already has amber in its structural elements (headers, labels), limit functional amber to 1-2 cards maximum. Otherwise the signal drowns in the noise of the brand palette.
+        </p>
+    </div>
+
+    <!-- ─── THE DECISION PROCESS ────────────────────── -->
+    <h3 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:28px;margin-bottom:16px;color:var(--text);">How to Assign Color</h3>
+
+    <p style="font-size:14px;font-weight:300;color:var(--text-2);max-width:680px;line-height:1.85;margin-bottom:32px;">
+        For every card on a page, walk through these three questions in order.
+    </p>
+
+    <table class="scale-table" style="margin-bottom:64px;">
+        <thead>
+            <tr>
+                <th style="width:5%;">Step</th>
+                <th style="width:35%;">Question</th>
+                <th>If yes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="color:var(--accent);font-weight:500;font-size:16px;">1</td>
+                <td style="color:var(--text);font-weight:500;">Does this card carry a judgment?<br><span style="font-weight:300;color:var(--text-2);font-size:12px;">Is the outcome good, bad, or the single most critical move?</span></td>
+                <td style="color:var(--text-2);">
+                    Good outcome = <strong style="color:#5B8C5A;">sage</strong><br>
+                    Bad outcome / risk = <strong style="color:#B8564F;">clay</strong><br>
+                    The one critical unlock = <strong style="color:#C96A2B;">amber</strong> (max 1-2 per page)
+                </td>
+            </tr>
+            <tr>
+                <td style="color:var(--accent);font-weight:500;font-size:16px;">2</td>
+                <td style="color:var(--text);font-weight:500;">Does this card represent a distinct category?<br><span style="font-weight:300;color:var(--text-2);font-size:12px;">Is it a different type of work that needs to be visually separated from its neighbors?</span></td>
+                <td style="color:var(--text-2);">
+                    People / hiring = <strong style="color:#7C5A9E;">plum</strong><br>
+                    Other categories = assign a color, document it, use it consistently
+                </td>
+            </tr>
+            <tr>
+                <td style="color:var(--accent);font-weight:500;font-size:16px;">3</td>
+                <td style="color:var(--text);font-weight:500;">Does this card need visibility without judgment?<br><span style="font-weight:300;color:var(--text-2);font-size:12px;">Is it in-progress, informational, or worth noting but not good or bad?</span></td>
+                <td style="color:var(--text-2);">
+                    Yes = <strong style="color:#5B7F95;">steel</strong><br>
+                    No = <strong style="color:var(--text-3);">default</strong> (warm cream, no color)
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- ─── TOKEN FORMAT ────────────────────────────── -->
+    <h3 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:28px;margin-bottom:16px;color:var(--text);">Token Format</h3>
+
+    <p style="font-size:14px;font-weight:300;color:var(--text-2);max-width:680px;line-height:1.85;margin-bottom:32px;">
+        Every functional color has three forms. The solid color is for text and labels. The glow is for card backgrounds. The border is for card edges.
     </p>
 
     <table class="scale-table" style="margin-bottom:64px;">
         <thead>
             <tr>
                 <th>Token</th>
-                <th>Solid</th>
-                <th>Glow (background)</th>
-                <th>Border</th>
+                <th>Solid (text/labels)</th>
+                <th>Glow (card background)</th>
+                <th>Border (card edge)</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>Sage</td>
-                <td style="color:#5B8C5A;font-family:monospace;">#5B8C5A</td>
+                <td style="color:#5B8C5A;font-weight:500;">Sage</td>
+                <td style="font-family:monospace;font-size:11px;">#5B8C5A</td>
                 <td style="font-family:monospace;font-size:11px;">rgba(91,140,90,0.08)</td>
                 <td style="font-family:monospace;font-size:11px;">rgba(91,140,90,0.25)</td>
             </tr>
             <tr>
-                <td>Amber</td>
-                <td style="color:#C96A2B;font-family:monospace;">#C96A2B</td>
-                <td style="font-family:monospace;font-size:11px;">rgba(201,106,43,0.08)</td>
-                <td style="font-family:monospace;font-size:11px;">rgba(201,106,43,0.25)</td>
-            </tr>
-            <tr>
-                <td>Clay</td>
-                <td style="color:#B8564F;font-family:monospace;">#B8564F</td>
+                <td style="color:#B8564F;font-weight:500;">Clay</td>
+                <td style="font-family:monospace;font-size:11px;">#B8564F</td>
                 <td style="font-family:monospace;font-size:11px;">rgba(184,86,79,0.08)</td>
                 <td style="font-family:monospace;font-size:11px;">rgba(184,86,79,0.25)</td>
             </tr>
             <tr>
-                <td>Steel</td>
-                <td style="color:#5B7F95;font-family:monospace;">#5B7F95</td>
+                <td style="color:#C96A2B;font-weight:500;">Amber</td>
+                <td style="font-family:monospace;font-size:11px;">#C96A2B</td>
+                <td style="font-family:monospace;font-size:11px;">rgba(201,106,43,0.08)</td>
+                <td style="font-family:monospace;font-size:11px;">rgba(201,106,43,0.25)</td>
+            </tr>
+            <tr>
+                <td style="color:#5B7F95;font-weight:500;">Steel</td>
+                <td style="font-family:monospace;font-size:11px;">#5B7F95</td>
                 <td style="font-family:monospace;font-size:11px;">rgba(91,127,149,0.08)</td>
                 <td style="font-family:monospace;font-size:11px;">rgba(91,127,149,0.25)</td>
             </tr>
             <tr>
-                <td>Plum</td>
-                <td style="color:#7C5A9E;font-family:monospace;">#7C5A9E</td>
+                <td style="color:#7C5A9E;font-weight:500;">Plum</td>
+                <td style="font-family:monospace;font-size:11px;">#7C5A9E</td>
                 <td style="font-family:monospace;font-size:11px;">rgba(124,90,158,0.08)</td>
                 <td style="font-family:monospace;font-size:11px;">rgba(124,90,158,0.25)</td>
             </tr>
         </tbody>
     </table>
 
-    <!-- Decision framework -->
-    <h3 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:28px;margin-bottom:32px;color:var(--text);">When to Use What</h3>
-
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:48px;">
-
-        <div class="voice-card is" style="border-top:2px solid #5B8C5A;">
-            <div class="voice-card-label" style="color:#5B8C5A;">&#10003; Sage - judgment: positive</div>
-            <ul class="voice-items">
-                <li>Task is completed or delivered</li>
-                <li>Metric is above target</li>
-                <li>Deal is closed, milestone achieved</li>
-                <li>Outcome was good</li>
-            </ul>
-        </div>
-
-        <div class="voice-card is" style="border-top:2px solid #C96A2B;">
-            <div class="voice-card-label" style="color:#C96A2B;">&#9670; Amber - judgment: critical</div>
-            <ul class="voice-items">
-                <li>The single most important move this quarter</li>
-                <li>The unlock that enables everything else</li>
-                <li>Requires immediate focus or decision</li>
-                <li>High leverage, high stakes</li>
-            </ul>
-        </div>
-
-        <div class="voice-card is" style="border-top:2px solid #B8564F;">
-            <div class="voice-card-label" style="color:#B8564F;">&#10007; Clay - judgment: negative</div>
-            <ul class="voice-items">
-                <li>Task is blocked or off-track</li>
-                <li>Metric is below target</li>
-                <li>Risk that could derail progress</li>
-                <li>Something that needs to be fixed</li>
-            </ul>
-        </div>
-
-        <div class="voice-card is" style="border-top:2px solid #5B7F95;">
-            <div class="voice-card-label" style="color:#5B7F95;">&#9679; Steel - no judgment: informational</div>
-            <ul class="voice-items">
-                <li>Work is in progress, no verdict yet</li>
-                <li>Context the viewer should note</li>
-                <li>Baseline data, reference point</li>
-                <li>Neutral status update</li>
-            </ul>
-        </div>
-
-        <div class="voice-card is" style="border-top:2px solid #7C5A9E;">
-            <div class="voice-card-label" style="color:#7C5A9E;">&#9632; Plum - no judgment: category</div>
-            <ul class="voice-items">
-                <li>A different type of work (e.g., hiring vs. sales)</li>
-                <li>Distinguishing who or what, not good or bad</li>
-                <li>Use additional category colors as needed (assign and document per project)</li>
-            </ul>
-        </div>
-
-        <div class="voice-card not" style="border-top:2px solid var(--border);">
-            <div class="voice-card-label">&#9744; Default - no meaning</div>
-            <ul class="voice-items">
-                <li>Regular task, no special status</li>
-                <li>Supporting work that follows from a critical unlock</li>
-                <li>Operational items with no judgment attached</li>
-                <li>Most cards should be this color</li>
-            </ul>
-        </div>
-
-    </div>
-
-    <!-- Rules -->
+    <!-- ─── RULES ───────────────────────────────────── -->
     <h3 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:28px;margin-bottom:32px;color:var(--text);">Rules</h3>
 
     <table class="scale-table">
@@ -942,32 +920,36 @@
         </thead>
         <tbody>
             <tr>
-                <td style="color:var(--text);font-weight:500;">Gray is default. Color is exception.</td>
-                <td style="color:var(--text-2);">Most cards on any page should be warm cream (default). If everything is colored, nothing stands out. Color draws the eye - use it only where attention should go.</td>
+                <td style="color:var(--text);font-weight:500;">Color reflects meaning, not time.</td>
+                <td style="color:var(--text-2);">A roadmap card representing a positive outcome is sage whether it happened in January or is planned for December. A risk is clay whether it's active today or anticipated next quarter. Never assign default gray to a future card just because it hasn't happened yet - ask what the card communicates, not when it occurs.</td>
             </tr>
             <tr>
-                <td style="color:var(--text);font-weight:500;">Color must encode information.</td>
-                <td style="color:var(--text-2);">If a card is colored, a viewer should be able to articulate why without reading the label. "It's green because it's done." "It's orange because it's the critical move." If you can't say why, remove the color.</td>
+                <td style="color:var(--text);font-weight:500;">Ask for every card, not just the obvious ones.</td>
+                <td style="color:var(--text-2);">The mistake is not assigning the wrong color - it's skipping the question. Walk through every card on the page and ask "what does this communicate?" Default gray is not a safe fallback. It is a deliberate statement that the card has no special meaning. If the card IS meaningful, it needs a color.</td>
             </tr>
             <tr>
                 <td style="color:var(--text);font-weight:500;">Sage and clay are reserved for judgment.</td>
                 <td style="color:var(--text-2);">Never use green or red to distinguish arbitrary categories. They are too loaded with positive/negative meaning. A "Sales" card should not be green just because you picked green for sales - that implies sales is going well.</td>
             </tr>
             <tr>
-                <td style="color:var(--text);font-weight:500;">One color per category, everywhere.</td>
-                <td style="color:var(--text-2);">If "Hiring" is plum on slide 3, it is plum on slide 17. Consistency across an entire document or dashboard. Never reassign a color mid-deck.</td>
+                <td style="color:var(--text);font-weight:500;">Amber is rare. Max 1-2 per page.</td>
+                <td style="color:var(--text-2);">Amber is the brand accent - it already appears on labels, buttons, and section markers. When it also appears on a functional card, it must mean "this is the single critical unlock." If three things are amber, nothing is critical. Reserve it ruthlessly.</td>
+            </tr>
+            <tr>
+                <td style="color:var(--text);font-weight:500;">One color per entity, everywhere.</td>
+                <td style="color:var(--text-2);">If "Salesforce" is sage on slide 3, it is sage on slide 17 - assuming the meaning hasn't changed. If the same entity appears in different states (done in Q1, at-risk in Q3), the color changes because the meaning changed, not the entity.</td>
             </tr>
             <tr>
                 <td style="color:var(--text);font-weight:500;">Max 4-5 colors per page.</td>
-                <td style="color:var(--text-2);">If you have more categories than colors, some should be default/gray. Group smaller categories into "Other." More than 5 colors becomes indistinguishable.</td>
+                <td style="color:var(--text-2);">More than 5 colors becomes visual noise. If you have more categories than colors, some should be default. Group smaller categories into "Other."</td>
             </tr>
             <tr>
                 <td style="color:var(--text);font-weight:500;">Never rely on color alone.</td>
-                <td style="color:var(--text-2);">Always pair color with a text label, icon, or shape. Roughly 8% of men have some form of color vision deficiency. The label tag on Katha cards ("DONE," "RISK," "HIRE") handles this.</td>
+                <td style="color:var(--text-2);">Always pair color with a text label, icon, or shape. The label tag on Katha cards ("DONE," "RISK," "HIRE") handles this.</td>
             </tr>
             <tr>
                 <td style="color:var(--text);font-weight:500;">Status rolls up to worst case.</td>
-                <td style="color:var(--text-2);">When summarizing multiple items, the summary takes the most severe color. If sub-items are sage, default, and clay - the summary is clay. Surface the problem, not the average.</td>
+                <td style="color:var(--text-2);">When summarizing multiple items, the summary takes the most severe color. If sub-items are sage, default, and clay - the summary is clay.</td>
             </tr>
         </tbody>
     </table>
