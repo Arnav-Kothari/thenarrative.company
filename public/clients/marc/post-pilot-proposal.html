@@ -14,6 +14,11 @@
     --text: #15130E; --text-2: #6B6157; --text-3: #A39888;
     --accent: #C96A2B; --accent-dark: #B05A22;
     --accent-glow: rgba(201,106,43,0.08); --accent-border: rgba(201,106,43,0.25);
+    /* Katha Functional Colors */
+    --sage: #5B8C5A; --sage-glow: rgba(91,140,90,0.08); --sage-border: rgba(91,140,90,0.25);
+    --clay: #B8564F; --clay-glow: rgba(184,86,79,0.08); --clay-border: rgba(184,86,79,0.25);
+    --steel: #5B7F95; --steel-glow: rgba(91,127,149,0.08); --steel-border: rgba(91,127,149,0.25);
+    --plum: #7C5A9E; --plum-glow: rgba(124,90,158,0.08); --plum-border: rgba(124,90,158,0.25);
     --border: #DDD7CC; --card: #EDE7DB;
   }
   html { scroll-behavior: smooth; }
@@ -78,6 +83,9 @@
   .scale-table td { font-size: 15px; font-weight: 300; color: var(--text-2); padding: 14px 16px; border-bottom: 1px solid var(--border); }
   .scale-table td:first-child { font-weight: 400; color: var(--text); }
   .scale-table td.accent-val { font-weight: 500; color: var(--accent); font-family: 'Inter', sans-serif; }
+  .scale-table tr.needs-input { background: var(--accent-glow); }
+  .scale-table tr.needs-input td { color: var(--accent); font-weight: 400; }
+  .scale-table tr.needs-input td:first-child { color: var(--accent); }
   .scale-table tr:last-child td { border-bottom: none; }
 
   /* NOTE */
@@ -219,27 +227,27 @@
         <tr>
           <td>Exec 01</td>
           <td>Robin Washington</td>
-          <td class="accent-val">LinkedIn</td>
+          <td>LinkedIn</td>
         </tr>
         <tr>
           <td>Exec 02</td>
           <td>Vala Afshar</td>
-          <td class="accent-val">LinkedIn + X</td>
+          <td>LinkedIn + X</td>
         </tr>
-        <tr>
+        <tr class="needs-input">
           <td>Exec 03</td>
           <td>Your suggestion</td>
-          <td class="accent-val">Who would be the strongest fit?</td>
+          <td>Who would be the strongest fit?</td>
         </tr>
         <tr>
           <td>Company Handle 01</td>
           <td>Salesforce</td>
-          <td class="accent-val">LinkedIn + X</td>
+          <td>LinkedIn + X</td>
         </tr>
         <tr>
           <td>Company Handle 02+</td>
           <td>Per Moment</td>
-          <td class="accent-val">Based on the moment's requirements</td>
+          <td>Based on the moment's requirements</td>
         </tr>
       </tbody>
     </table>
