@@ -1,0 +1,613 @@
+{
+  "Benioff": {
+    "display_name": "Marc Benioff",
+    "total_comments": 1455,
+    "hvp_comments": 40,
+    "hvp_pct": 2.7,
+    "unique_hvp_commenters": 31,
+    "total_unique_posts": 49,
+    "posts_with_hvp": 16,
+    "hvp_post_pct": 32.7,
+    "hvp_likes": 2380,
+    "total_likes": 26256,
+    "hvp_avg_likes": 59.5,
+    "non_hvp_avg_likes": 16.9,
+    "hvp_by_category": {
+      "AI & Enterprise Founders": 19,
+      "Venture Capital & Growth Investors": 5,
+      "Fortune 500 Executives": 5,
+      "Enterprise Organisations": 3,
+      "Industry Analysts": 3,
+      "Media & Journalists": 2,
+      "Enterprise Technology Leaders": 1,
+      "Non-Target Public Figures": 1,
+      "Industry Influencers": 1
+    },
+    "top_commenters": [
+      [
+        "Benioff",
+        5
+      ],
+      [
+        "matt_slotnick",
+        3
+      ],
+      [
+        "jasonlk",
+        2
+      ],
+      [
+        "koylanai",
+        2
+      ],
+      [
+        "sarbjeetjohal",
+        2
+      ],
+      [
+        "rronak_",
+        1
+      ],
+      [
+        "wabi",
+        1
+      ],
+      [
+        "AlexFinn",
+        1
+      ],
+      [
+        "aaronjmars",
+        1
+      ],
+      [
+        "TonyRobbins",
+        1
+      ]
+    ],
+    "top_liked_hvp": [
+      {
+        "handle": "MrBeast",
+        "name": "MrBeast",
+        "likes": 1822,
+        "category": "AI & Enterprise Founders",
+        "rank": 313
+      },
+      {
+        "handle": "Benioff",
+        "name": "Marc Benioff",
+        "likes": 206,
+        "category": "Fortune 500 Executives",
+        "rank": 153
+      },
+      {
+        "handle": "Benioff",
+        "name": "Marc Benioff",
+        "likes": 99,
+        "category": "Fortune 500 Executives",
+        "rank": 153
+      },
+      {
+        "handle": "TonyRobbins",
+        "name": "Tony Robbins",
+        "likes": 55,
+        "category": "AI & Enterprise Founders",
+        "rank": 7697
+      },
+      {
+        "handle": "PTrubey",
+        "name": "Phil Trubey",
+        "likes": 33,
+        "category": "Venture Capital & Growth Investors",
+        "rank": 3969
+      }
+    ]
+  },
+  "sundarpichai": {
+    "display_name": "Sundar Pichai",
+    "total_comments": 2577,
+    "hvp_comments": 41,
+    "hvp_pct": 1.6,
+    "unique_hvp_commenters": 17,
+    "total_unique_posts": 30,
+    "posts_with_hvp": 21,
+    "hvp_post_pct": 70.0,
+    "hvp_likes": 20278,
+    "total_likes": 41717,
+    "hvp_avg_likes": 494.6,
+    "non_hvp_avg_likes": 8.5,
+    "hvp_by_category": {
+      "Fortune 500 Executives": 25,
+      "AI & Enterprise Founders": 4,
+      "Enterprise Organisations": 3,
+      "Industry Influencers": 3,
+      "Venture Capital & Growth Investors": 2,
+      "Enterprise Technology Leaders": 2,
+      "Academia & Research": 1,
+      "Non-Target Public Figures": 1
+    },
+    "top_commenters": [
+      [
+        "sundarpichai",
+        25
+      ],
+      [
+        "gmiller",
+        1
+      ],
+      [
+        "testingcatalog",
+        1
+      ],
+      [
+        "UniverseIce",
+        1
+      ],
+      [
+        "Trace_Cohen",
+        1
+      ],
+      [
+        "dennishegstad",
+        1
+      ],
+      [
+        "rohanpaul_ai",
+        1
+      ],
+      [
+        "shaunmmaguire",
+        1
+      ],
+      [
+        "andrewmccalip",
+        1
+      ],
+      [
+        "NathieVR",
+        1
+      ]
+    ],
+    "top_liked_hvp": [
+      {
+        "handle": "sundarpichai",
+        "name": "Sundar Pichai",
+        "likes": 10254,
+        "category": "Fortune 500 Executives",
+        "rank": 189
+      },
+      {
+        "handle": "sundarpichai",
+        "name": "Sundar Pichai",
+        "likes": 1077,
+        "category": "Fortune 500 Executives",
+        "rank": 189
+      },
+      {
+        "handle": "sundarpichai",
+        "name": "Sundar Pichai",
+        "likes": 738,
+        "category": "Fortune 500 Executives",
+        "rank": 189
+      },
+      {
+        "handle": "sundarpichai",
+        "name": "Sundar Pichai",
+        "likes": 732,
+        "category": "Fortune 500 Executives",
+        "rank": 189
+      },
+      {
+        "handle": "sundarpichai",
+        "name": "Sundar Pichai",
+        "likes": 715,
+        "category": "Fortune 500 Executives",
+        "rank": 189
+      }
+    ]
+  },
+  "satyanadella": {
+    "display_name": "Satya Nadella",
+    "total_comments": 2489,
+    "hvp_comments": 13,
+    "hvp_pct": 0.5,
+    "unique_hvp_commenters": 10,
+    "total_unique_posts": 20,
+    "posts_with_hvp": 5,
+    "hvp_post_pct": 25.0,
+    "hvp_likes": 2492,
+    "total_likes": 70319,
+    "hvp_avg_likes": 191.7,
+    "non_hvp_avg_likes": 27.4,
+    "hvp_by_category": {
+      "Fortune 500 Executives": 4,
+      "AI & Enterprise Founders": 2,
+      "Non-Target Public Figures": 2,
+      "Venture Capital & Growth Investors": 2,
+      "Enterprise Organisations": 2,
+      "Industry Influencers": 1
+    },
+    "top_commenters": [
+      [
+        "satyanadella",
+        4
+      ],
+      [
+        "photomatt",
+        1
+      ],
+      [
+        "sainimatic",
+        1
+      ],
+      [
+        "alt_w_v_g",
+        1
+      ],
+      [
+        "TheAhmadOsman",
+        1
+      ],
+      [
+        "benitoz",
+        1
+      ],
+      [
+        "SaiyamPathak",
+        1
+      ],
+      [
+        "CoorsLightCEO",
+        1
+      ],
+      [
+        "Midnight_Captl",
+        1
+      ],
+      [
+        "Cloudflare",
+        1
+      ]
+    ],
+    "top_liked_hvp": [
+      {
+        "handle": "satyanadella",
+        "name": "Satya Nadella",
+        "likes": 645,
+        "category": "Fortune 500 Executives",
+        "rank": 199
+      },
+      {
+        "handle": "Cloudflare",
+        "name": "Cloudflare",
+        "likes": 564,
+        "category": "Enterprise Organisations",
+        "rank": 1096
+      },
+      {
+        "handle": "satyanadella",
+        "name": "Satya Nadella",
+        "likes": 409,
+        "category": "Fortune 500 Executives",
+        "rank": 199
+      },
+      {
+        "handle": "alt_w_v_g",
+        "name": "Ethan Brooks",
+        "likes": 298,
+        "category": "Non-Target Public Figures",
+        "rank": 6297
+      },
+      {
+        "handle": "satyanadella",
+        "name": "Satya Nadella",
+        "likes": 286,
+        "category": "Fortune 500 Executives",
+        "rank": 199
+      }
+    ]
+  },
+  "patrickc": {
+    "display_name": "Patrick Collison",
+    "total_comments": 2214,
+    "hvp_comments": 85,
+    "hvp_pct": 3.8,
+    "unique_hvp_commenters": 79,
+    "total_unique_posts": 31,
+    "posts_with_hvp": 19,
+    "hvp_post_pct": 61.3,
+    "hvp_likes": 3363,
+    "total_likes": 154321,
+    "hvp_avg_likes": 39.6,
+    "non_hvp_avg_likes": 70.9,
+    "hvp_by_category": {
+      "AI & Enterprise Founders": 40,
+      "Venture Capital & Growth Investors": 14,
+      "Media & Journalists": 7,
+      "Academia & Research": 6,
+      "Enterprise Technology Leaders": 5,
+      "Industry Influencers": 4,
+      "Non-Target Public Figures": 4,
+      "Public Policy & Regulatory": 2,
+      "Enterprise Organisations": 2,
+      "Global Consulting & System Integrators": 1
+    },
+    "top_commenters": [
+      [
+        "Trace_Cohen",
+        4
+      ],
+      [
+        "DanielleFong",
+        2
+      ],
+      [
+        "matijagrcic",
+        2
+      ],
+      [
+        "patrickc",
+        2
+      ],
+      [
+        "karpathy",
+        1
+      ],
+      [
+        "simonw",
+        1
+      ],
+      [
+        "krishnanrohit",
+        1
+      ],
+      [
+        "natolambert",
+        1
+      ],
+      [
+        "michael_nielsen",
+        1
+      ],
+      [
+        "sampullara",
+        1
+      ]
+    ],
+    "top_liked_hvp": [
+      {
+        "handle": "karpathy",
+        "name": "Andrej Karpathy",
+        "likes": 1853,
+        "category": "AI & Enterprise Founders",
+        "rank": 1
+      },
+      {
+        "handle": "patrickc",
+        "name": "Patrick Collison",
+        "likes": 257,
+        "category": "AI & Enterprise Founders",
+        "rank": 56
+      },
+      {
+        "handle": "levelsio",
+        "name": "@levelsio",
+        "likes": 182,
+        "category": "AI & Enterprise Founders",
+        "rank": 66
+      },
+      {
+        "handle": "tszzl",
+        "name": "roon",
+        "likes": 129,
+        "category": "Enterprise Technology Leaders",
+        "rank": 12
+      },
+      {
+        "handle": "patio11",
+        "name": "Patrick McKenzie",
+        "likes": 109,
+        "category": "Media & Journalists",
+        "rank": 233
+      }
+    ]
+  },
+  "BillRMcDermott": {
+    "display_name": "Bill McDermott",
+    "total_comments": 296,
+    "hvp_comments": 9,
+    "hvp_pct": 3.0,
+    "unique_hvp_commenters": 9,
+    "total_unique_posts": 47,
+    "posts_with_hvp": 6,
+    "hvp_post_pct": 12.8,
+    "hvp_likes": 18,
+    "total_likes": 797,
+    "hvp_avg_likes": 2.0,
+    "non_hvp_avg_likes": 2.7,
+    "hvp_by_category": {
+      "Venture Capital & Growth Investors": 3,
+      "Enterprise Organisations": 2,
+      "Industry Analysts": 2,
+      "Media & Journalists": 1,
+      "Global Consulting & System Integrators": 1
+    },
+    "top_commenters": [
+      [
+        "BrianSozzi",
+        1
+      ],
+      [
+        "DellTech",
+        1
+      ],
+      [
+        "TheSixFiveMedia",
+        1
+      ],
+      [
+        "Konstantine",
+        1
+      ],
+      [
+        "altcap",
+        1
+      ],
+      [
+        "danielnewmanUV",
+        1
+      ],
+      [
+        "saranormous",
+        1
+      ],
+      [
+        "sarbjeetjohal",
+        1
+      ],
+      [
+        "tcrawford",
+        1
+      ]
+    ],
+    "top_liked_hvp": [
+      {
+        "handle": "DellTech",
+        "name": "Dell Technologies",
+        "likes": 8,
+        "category": "Enterprise Organisations",
+        "rank": 5000
+      },
+      {
+        "handle": "altcap",
+        "name": "Brad Gerstner",
+        "likes": 4,
+        "category": "Venture Capital & Growth Investors",
+        "rank": 103
+      },
+      {
+        "handle": "TheSixFiveMedia",
+        "name": "Six Five Media",
+        "likes": 3,
+        "category": "Enterprise Organisations",
+        "rank": 6528
+      },
+      {
+        "handle": "Konstantine",
+        "name": "Konstantine Buhler",
+        "likes": 2,
+        "category": "Venture Capital & Growth Investors",
+        "rank": 2364
+      },
+      {
+        "handle": "danielnewmanUV",
+        "name": "Daniel Newman",
+        "likes": 1,
+        "category": "Industry Analysts",
+        "rank": 2453
+      }
+    ]
+  },
+  "DarioAmodei": {
+    "display_name": "Dario Amodei",
+    "total_comments": 868,
+    "hvp_comments": 30,
+    "hvp_pct": 3.5,
+    "unique_hvp_commenters": 27,
+    "total_unique_posts": 4,
+    "posts_with_hvp": 2,
+    "hvp_post_pct": 50.0,
+    "hvp_likes": 4668,
+    "total_likes": 12175,
+    "hvp_avg_likes": 155.6,
+    "non_hvp_avg_likes": 9.0,
+    "hvp_by_category": {
+      "AI & Enterprise Founders": 10,
+      "Non-Target Public Figures": 9,
+      "Industry Influencers": 3,
+      "Academia & Research": 2,
+      "Media & Journalists": 2,
+      "Enterprise Organisations": 2,
+      "Public Policy & Regulatory": 2
+    },
+    "top_commenters": [
+      [
+        "AISafetyMemes",
+        3
+      ],
+      [
+        "HumanHarlan",
+        2
+      ],
+      [
+        "gfodor",
+        1
+      ],
+      [
+        "tekbog",
+        1
+      ],
+      [
+        "reach_vb",
+        1
+      ],
+      [
+        "boneGPT",
+        1
+      ],
+      [
+        "bengoertzel",
+        1
+      ],
+      [
+        "yacineMTB",
+        1
+      ],
+      [
+        "Indian_Bronson",
+        1
+      ],
+      [
+        "GaryMarcus",
+        1
+      ]
+    ],
+    "top_liked_hvp": [
+      {
+        "handle": "gfodor",
+        "name": "gfodor.id",
+        "likes": 2439,
+        "category": "AI & Enterprise Founders",
+        "rank": 5833
+      },
+      {
+        "handle": "tekbog",
+        "name": "terminally on\u03bbine \u03b5ngineer",
+        "likes": 464,
+        "category": "Industry Influencers",
+        "rank": 4060
+      },
+      {
+        "handle": "AISafetyMemes",
+        "name": "AI Notkilleveryoneism Memes",
+        "likes": 334,
+        "category": "Non-Target Public Figures",
+        "rank": 4119
+      },
+      {
+        "handle": "reach_vb",
+        "name": "Vaibhav (VB) Srivastav",
+        "likes": 315,
+        "category": "AI & Enterprise Founders",
+        "rank": 1512
+      },
+      {
+        "handle": "boneGPT",
+        "name": "bone",
+        "likes": 197,
+        "category": "Non-Target Public Figures",
+        "rank": 3000
+      }
+    ]
+  }
+}
