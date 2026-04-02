@@ -1210,22 +1210,63 @@ document.querySelectorAll('a, button, [data-tilt]').forEach(el => {
 function scramble(el) {
     const target = el.dataset.text;
     const pool = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-    let frame = 0, total = target.length * 1.2;
+    const total = Math.ceil(target.length * 1.2);
 
+    /* Build per-character spans so each letter occupies fixed space */
+    el.textContent = '';
+    const spans = [];
+    for (let i = 0; i < target.length; i++) {
+        const s = document.createElement('span');
+        if (target[i] === ' ') {
+            s.innerHTML = '&nbsp;';
+            s.style.display = 'inline';
+        } else {
+            s.textContent = pool[Math.floor(Math.random() * pool.length)];
+            /* Lock each character to the width of its final letter */
+            s.style.display = 'inline-block';
+            s.style.textAlign = 'center';
+
+            /* Measure the final character width */
+            const measure = document.createElement('span');
+            measure.style.visibility = 'hidden';
+            measure.style.position = 'absolute';
+            measure.style.font = getComputedStyle(el).font;
+            measure.textContent = target[i];
+            document.body.appendChild(measure);
+            s.style.width = measure.offsetWidth + 'px';
+            document.body.removeChild(measure);
+        }
+        spans.push(s);
+        el.appendChild(s);
+    }
+
+    let frame = 0;
     const run = setInterval(() => {
-        el.textContent = target.split('').map((ch, i) => {
-            if (ch === ' ') return ' ';
-            if (i < frame / 1.2) return target[i];
-            return pool[Math.floor(Math.random() * pool.length)];
-        }).join('');
+        for (let i = 0; i < target.length; i++) {
+            if (target[i] === ' ') continue;
+            if (i < frame / 1.2) {
+                spans[i].textContent = target[i];
+            } else {
+                spans[i].textContent = pool[Math.floor(Math.random() * pool.length)];
+            }
+        }
         frame++;
-        if (frame > total) { el.textContent = target; clearInterval(run); }
+        if (frame > total) {
+            clearInterval(run);
+        }
     }, 28);
 }
 
 window.addEventListener('load', () => {
     const el = document.querySelector('.sc');
-    if (el) setTimeout(() => scramble(el), 1100);
+    if (el) {
+        /* Hide real text until scramble starts so there's no flash */
+        el.style.visibility = 'hidden';
+        setTimeout(() => {
+            el.style.visibility = 'visible';
+            scramble(el);
+        }, 1100);
+    }
 });
 
 
