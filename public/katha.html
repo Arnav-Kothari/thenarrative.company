@@ -1215,17 +1215,21 @@ function scramble(el) {
     const pool = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
     const total = Math.ceil(target.length * 1.2);
 
-    /* Build per-character spans so each letter occupies fixed space */
+    /* Build per-character spans, grouped by word in nowrap containers
+       so the browser never breaks mid-word */
     el.textContent = '';
     const spans = [];
-    for (let i = 0; i < target.length; i++) {
-        const s = document.createElement('span');
-        if (target[i] === ' ') {
-            s.innerHTML = '&nbsp;';
-            s.style.display = 'inline';
-        } else {
+    const words = target.split(' ');
+
+    words.forEach((word, wi) => {
+        /* Create a nowrap wrapper for each word */
+        const wordWrap = document.createElement('span');
+        wordWrap.style.whiteSpace = 'nowrap';
+        wordWrap.style.display = 'inline';
+
+        for (let i = 0; i < word.length; i++) {
+            const s = document.createElement('span');
             s.textContent = pool[Math.floor(Math.random() * pool.length)];
-            /* Lock each character to the width of its final letter */
             s.style.display = 'inline-block';
             s.style.textAlign = 'center';
 
@@ -1234,23 +1238,40 @@ function scramble(el) {
             measure.style.visibility = 'hidden';
             measure.style.position = 'absolute';
             measure.style.font = getComputedStyle(el).font;
-            measure.textContent = target[i];
+            measure.textContent = word[i];
             document.body.appendChild(measure);
             s.style.width = measure.offsetWidth + 'px';
             document.body.removeChild(measure);
+
+            spans.push(s);
+            wordWrap.appendChild(s);
         }
-        spans.push(s);
-        el.appendChild(s);
-    }
+
+        el.appendChild(wordWrap);
+
+        /* Add a normal space between words (not after the last word) */
+        if (wi < words.length - 1) {
+            const spacer = document.createElement('span');
+            spacer.innerHTML = ' ';
+            spacer.style.display = 'inline';
+            spans.push(spacer);
+            el.appendChild(spacer);
+        }
+    });
+
+    /* Build a flat array of target characters (skipping spaces, which are spacer spans) */
+    const chars = target.split('').filter(c => c !== ' ');
 
     let frame = 0;
+    let ci = 0;
+    const letterSpans = spans.filter(s => s.innerHTML !== ' ');
+
     const run = setInterval(() => {
-        for (let i = 0; i < target.length; i++) {
-            if (target[i] === ' ') continue;
+        for (let i = 0; i < letterSpans.length; i++) {
             if (i < frame / 1.2) {
-                spans[i].textContent = target[i];
+                letterSpans[i].textContent = chars[i];
             } else {
-                spans[i].textContent = pool[Math.floor(Math.random() * pool.length)];
+                letterSpans[i].textContent = pool[Math.floor(Math.random() * pool.length)];
             }
         }
         frame++;
