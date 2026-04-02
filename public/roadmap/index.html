@@ -14,9 +14,11 @@
     --text: #15130E; --text-2: #6B6157; --text-3: #A39888;
     --accent: #C96A2B; --accent-dark: #B05A22;
     --accent-glow: rgba(201,106,43,0.08); --accent-border: rgba(201,106,43,0.25);
-    --green: #4a7c59; --green-glow: rgba(74,124,89,0.08); --green-border: rgba(74,124,89,0.25);
-    --purple: #7c5a9e; --purple-glow: rgba(124,90,158,0.08); --purple-border: rgba(124,90,158,0.25);
-    --red: #B8564F; --red-glow: rgba(184,86,79,0.08); --red-border: rgba(184,86,79,0.25);
+    /* Katha Functional Colors */
+    --sage: #5B8C5A; --sage-glow: rgba(91,140,90,0.08); --sage-border: rgba(91,140,90,0.25);
+    --clay: #B8564F; --clay-glow: rgba(184,86,79,0.08); --clay-border: rgba(184,86,79,0.25);
+    --steel: #5B7F95; --steel-glow: rgba(91,127,149,0.08); --steel-border: rgba(91,127,149,0.25);
+    --plum: #7C5A9E; --plum-glow: rgba(124,90,158,0.08); --plum-border: rgba(124,90,158,0.25);
     --border: #DDD7CC; --card: #EDE7DB;
   }
   html { scroll-behavior: smooth; }
@@ -56,13 +58,13 @@
 
   .quarter { position: relative; padding: 0 12px; }
   .quarter::before { content: ''; position: absolute; top: 14px; left: 50%; width: 12px; height: 12px; margin-left: -6px; background: var(--bg); border: 1px solid var(--border); border-radius: 0; z-index: 1; }
-  .quarter.done::before { background: var(--green); border-color: var(--green); }
+  .quarter.done::before { background: var(--sage); border-color: var(--sage); }
   .quarter.active::before { background: var(--bg); border-color: var(--accent); }
 
   .quarter-header { text-align: center; padding-top: 48px; margin-bottom: 32px; }
   .quarter-label { font-size: 10px; font-weight: 400; text-transform: uppercase; letter-spacing: 0.28em; color: var(--text-3); margin-bottom: 4px; }
   .quarter-months { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 500; color: var(--text); letter-spacing: -0.01em; }
-  .quarter.done .quarter-label { color: var(--green); }
+  .quarter.done .quarter-label { color: var(--sage); }
 
   .tasks { list-style: none; display: flex; flex-direction: column; gap: 12px; }
 
@@ -70,19 +72,29 @@
   .task { background: var(--card); border: 1px solid var(--border); padding: 20px 18px; transition: border-color 0.3s; }
   .task:hover { border-color: var(--text-3); }
 
-  /* ORANGE: critical unlock - the move that makes everything else possible */
+  /* AMBER: critical unlock - the move that makes everything else possible */
   .task.critical { border-color: var(--accent-border); background: var(--accent-glow); }
   .task.critical .task-tag { color: var(--accent); }
   .task.critical .task-body { color: var(--text); }
 
-  /* GREEN: completed or positive outcome achieved */
-  .task.done { border-color: var(--green-border); background: var(--green-glow); }
-  .task.done .task-tag { color: var(--green); }
+  /* SAGE: completed, achieved, positive outcome */
+  .task.done { border-color: var(--sage-border); background: var(--sage-glow); }
+  .task.done .task-tag { color: var(--sage); }
   .task.done .task-body { color: var(--text); }
 
-  /* PURPLE: hiring/team building */
-  .task.team { border-color: var(--purple-border); background: var(--purple-glow); }
-  .task.team .task-tag { color: var(--purple); }
+  /* CLAY: risk, negative, blocked, off-track */
+  .task.risk { border-color: var(--clay-border); background: var(--clay-glow); }
+  .task.risk .task-tag { color: var(--clay); }
+  .task.risk .task-body { color: var(--text); }
+
+  /* STEEL: informational, in-progress, no judgment */
+  .task.info { border-color: var(--steel-border); background: var(--steel-glow); }
+  .task.info .task-tag { color: var(--steel); }
+  .task.info .task-body { color: var(--text); }
+
+  /* PLUM: category - people, team, hiring */
+  .task.team { border-color: var(--plum-border); background: var(--plum-glow); }
+  .task.team .task-tag { color: var(--plum); }
   .task.team .task-body { color: var(--text); }
 
   .task-tag { font-size: 10px; font-weight: 400; text-transform: uppercase; letter-spacing: 0.28em; margin-bottom: 8px; color: var(--text-3); }
@@ -160,7 +172,7 @@
   <div class="container">
     <div class="label">Timeline</div>
     <h2 class="title">Quarter by quarter</h2>
-    <p class="desc">Each quarter has one or two critical moves. The highlighted cards are the ones that unlock everything else.</p>
+    <p class="desc">Green is done. Orange is the critical unlock. Purple is a hire. Gray is supporting work. Every color means something.</p>
 
     <div class="timeline-grid">
 
@@ -205,7 +217,7 @@
             <div class="task-tag">Hire</div>
             <div class="task-body">Employee #1 - client ops lead</div>
           </li>
-          <li class="task">
+          <li class="task info">
             <div class="task-tag">Pipeline</div>
             <div class="task-body">Build case study deck off Salesforce results</div>
           </li>
@@ -223,7 +235,7 @@
             <div class="task-tag">Salesforce</div>
             <div class="task-body">Scope expansion and upsell</div>
           </li>
-          <li class="task">
+          <li class="task info">
             <div class="task-tag">Client #2</div>
             <div class="task-body">First big moment delivered, move to full rate</div>
           </li>
