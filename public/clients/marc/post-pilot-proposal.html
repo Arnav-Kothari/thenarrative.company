@@ -114,19 +114,29 @@
     .flow-arrow { justify-content: center; transform: rotate(90deg); padding: 4px 0; }
   }
   @media print {
-    section { padding: 32px 0; }
-    .hero { min-height: auto; padding: 40px 0; }
+    section { padding: 16px 0; }
+    .hero { min-height: auto; padding: 24px 0 16px; }
+    .hero h1 { font-size: 36px; margin-bottom: 12px; }
+    .hero-sub { font-size: 15px; }
+    .badge { margin-bottom: 16px; }
     section + section::before { display: none; }
-    .grid-2, .grid-3 { gap: 12px; margin: 16px 0; }
-    .flow { margin: 16px 0; }
-    .card { padding: 20px 18px; }
-    .desc { margin-bottom: 24px; }
-    .scale-table { margin: 20px 0; }
-    .bullet-list { margin: 16px 0; gap: 8px; }
-    .note { margin-top: 16px; }
-    .sub-title { margin-top: 20px; }
-    .bottom { padding: 40px 0; }
-    footer { padding: 24px 0; }
+    .label { margin-bottom: 8px; }
+    .title { font-size: 24px; margin-bottom: 8px; }
+    .desc { font-size: 15px; margin-bottom: 16px; }
+    .grid-2, .grid-3 { gap: 10px; margin: 12px 0; }
+    .flow { margin: 12px 0; }
+    .flow-step { padding: 12px 10px; }
+    .card { padding: 16px 14px; }
+    .card-title { font-size: 17px; }
+    .card-desc { font-size: 13px; }
+    .scale-table { margin: 12px 0; }
+    .scale-table td, .scale-table th { padding: 8px 12px; font-size: 13px; }
+    .bullet-list { margin: 10px 0; gap: 6px; }
+    .bullet-list li { font-size: 14px; }
+    .note { margin-top: 10px; font-size: 14px; }
+    .sub-title { margin-top: 14px; font-size: 18px; }
+    footer { padding: 16px 0; }
+    .katha-header { padding: 20px 0; }
   }
   @media (max-width: 600px) {
     section { padding: 56px 0; }
