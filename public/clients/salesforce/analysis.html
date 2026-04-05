@@ -15,7 +15,7 @@
     --text: #15130E; --text-2: #6B6157; --text-3: #A39888;
     --accent: #C96A2B; --accent-dark: #B05A22;
     --accent-glow: rgba(201,106,43,0.08); --accent-border: rgba(201,106,43,0.25);
-    /* Katha Functional Colors */
+    /* Functional Colors */
     --sage: #5B8C5A; --sage-glow: rgba(91,140,90,0.08); --sage-border: rgba(91,140,90,0.25);
     --clay: #B8564F; --clay-glow: rgba(184,86,79,0.08); --clay-border: rgba(184,86,79,0.25);
     --steel: #5B7F95; --steel-glow: rgba(91,127,149,0.08); --steel-border: rgba(91,127,149,0.25);
@@ -26,12 +26,12 @@
   body { font-family: 'Inter', -apple-system, sans-serif; font-weight: 300; background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
   .container { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
 
-  /* KATHA HEADER */
-  .katha-header { padding: 32px 0; border-bottom: 1px solid var(--border); }
-  .katha-header .container { display: flex; justify-content: space-between; align-items: center; }
-  .katha-logo { position: relative; display: inline-block; font-family: 'Inter', sans-serif; font-weight: 400; font-size: 14px; letter-spacing: 0.4em; text-transform: uppercase; color: var(--text); padding-top: 10px; }
-  .katha-logo::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: var(--accent); }
-  .katha-header-right { font-size: 11px; color: var(--text-2); letter-spacing: 0.14em; text-transform: uppercase; }
+  /* NARRATIVE HEADER */
+  .narrative-header { padding: 32px 0; border-bottom: 1px solid var(--border); }
+  .narrative-header .container { display: flex; justify-content: space-between; align-items: center; }
+  .narrative-logo { position: relative; display: inline-block; font-family: 'Inter', sans-serif; font-weight: 400; font-size: 14px; letter-spacing: 0.4em; text-transform: uppercase; color: var(--text); padding-top: 10px; }
+  .narrative-logo::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: var(--accent); }
+  .narrative-header-right { font-size: 11px; color: var(--text-2); letter-spacing: 0.14em; text-transform: uppercase; }
 
   /* HERO */
   .hero { min-height: 85vh; display: flex; flex-direction: column; justify-content: center; padding: 80px 0; position: relative; }
@@ -157,11 +157,11 @@
 </head>
 <body>
 
-<!-- KATHA HEADER -->
-<nav class="katha-header">
+<!-- NARRATIVE HEADER -->
+<nav class="narrative-header">
   <div class="container">
-    <span class="katha-logo">Katha</span>
-    <span class="katha-header-right">Competitive Intelligence</span>
+    <span class="narrative-logo">The Narrative Company</span>
+    <span class="narrative-header-right">Competitive Intelligence</span>
   </div>
 </nav>
 

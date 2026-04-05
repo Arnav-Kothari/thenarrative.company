@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Katha - Narrative for Executives",
+  title: "The Narrative Company",
   description: "We build and run the social presence for CEOs and senior leaders.",
 };
 

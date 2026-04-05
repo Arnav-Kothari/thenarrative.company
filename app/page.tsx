@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
-import './katha.css';
+import './narrative.css';
 
 export default function Home() {
   useEffect(() => {
@@ -145,21 +145,21 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="katha-page">
+    <div className="narrative-page">
       <div id="cursor" />
 
       {/* NAV */}
       <nav>
-        <a href="#" className="logo">Katha</a>
+        <a href="#" className="logo">The Narrative Company</a>
         <div style={{ display: 'flex', alignItems: 'center', gap: '28px' }}>
-          <a href="/katha/thesis" className="nav-link">Our Thesis</a>
+          <a href="/thesis" className="nav-link">Our Thesis</a>
           <a href="mailto:arnav.kothari@thenarrative.company" className="nav-link">Get in touch</a>
         </div>
       </nav>
 
       {/* HERO */}
       <section className="hero">
-        <div className="hero-ghost">{'\u0915\u0925\u093E'}</div>
+        <div className="hero-ghost">{'narrative'}</div>
         <div className="hero-content">
           <div className="hero-tag">Executive narrative</div>
           <h1 className="hero-headline">
@@ -335,8 +335,8 @@ export default function Home() {
 
       {/* FOOTER */}
       <footer>
-        <span className="footer-logo">Katha</span>
-        <span className="footer-note">&copy; 2026 Katha. All rights reserved.</span>
+        <span className="footer-logo">The Narrative Company</span>
+        <span className="footer-note">&copy; 2026 The Narrative Company. All rights reserved.</span>
       </footer>
     </div>
   );

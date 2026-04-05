@@ -11,11 +11,11 @@
 .roadmap-page .container { max-width: 1160px; margin: 0 auto; padding: 0 40px; }
 
 /* HEADER */
-.katha-header { padding: 32px 0; border-bottom: 1px solid var(--border); }
-.katha-header .container { display: flex; justify-content: space-between; align-items: center; }
-.katha-logo { position: relative; display: inline-block; font-family: 'Inter', sans-serif; font-weight: 400; font-size: 14px; letter-spacing: 0.4em; text-transform: uppercase; color: var(--text); padding-top: 10px; text-decoration: none; }
-.katha-logo::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: var(--accent); }
-.katha-header-right { font-size: 11px; color: var(--text-2); letter-spacing: 0.14em; text-transform: uppercase; }
+.narrative-header { padding: 32px 0; border-bottom: 1px solid var(--border); }
+.narrative-header .container { display: flex; justify-content: space-between; align-items: center; }
+.narrative-logo { position: relative; display: inline-block; font-family: 'Inter', sans-serif; font-weight: 400; font-size: 14px; letter-spacing: 0.4em; text-transform: uppercase; color: var(--text); padding-top: 10px; text-decoration: none; }
+.narrative-logo::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: var(--accent); }
+.narrative-header-right { font-size: 11px; color: var(--text-2); letter-spacing: 0.14em; text-transform: uppercase; }
 
 /* HERO */
 .roadmap-page .rm-hero { padding: 100px 0 80px; position: relative; }

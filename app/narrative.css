@@ -1,5 +1,5 @@
-/* ─── KATHA PAGE ─────────────────────────────── */
-.katha-page {
+/* ─── NARRATIVE PAGE ─────────────────────────────── */
+.narrative-page {
     background: var(--bg);
     color: var(--text);
     font-family: 'Inter', sans-serif;
@@ -28,7 +28,7 @@
 }
 
 /* ─── NAV ──────────────────────────────────── */
-.katha-page nav {
+.narrative-page nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 500;
     padding: 26px 52px;
     display: flex; justify-content: space-between; align-items: center;
@@ -605,7 +605,7 @@
 .cta-btn:hover { background: var(--accent); color: var(--bg); }
 
 /* ─── FOOTER ───────────────────────────────── */
-.katha-page footer {
+.narrative-page footer {
     padding: 26px 52px;
     border-top: 1px solid var(--border);
     display: flex;
@@ -759,11 +759,11 @@
 }
 
 @media (max-width: 700px) {
-    .katha-page nav, .hero, .shift, .pillars, .how, .article, .cta, .katha-page footer {
+    .narrative-page nav, .hero, .shift, .pillars, .how, .article, .cta, .narrative-page footer {
         padding-left: 24px;
         padding-right: 24px;
     }
     .steps { grid-template-columns: 1fr; }
-    .katha-page footer { flex-direction: column; gap: 12px; text-align: center; }
+    .narrative-page footer { flex-direction: column; gap: 12px; text-align: center; }
     .hero-ctas { flex-direction: column; align-items: flex-start; gap: 20px; }
 }

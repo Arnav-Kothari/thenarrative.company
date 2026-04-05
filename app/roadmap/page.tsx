@@ -21,10 +21,10 @@ export default function RoadmapPage() {
 
   return (
     <div className="roadmap-page">
-      <header className="katha-header">
+      <header className="narrative-header">
         <div className="container">
-          <a href="/" className="katha-logo">The Narrative Company</a>
-          <div className="katha-header-right">2026 Roadmap</div>
+          <a href="/" className="narrative-logo">The Narrative Company</a>
+          <div className="narrative-header-right">2026 Roadmap</div>
         </div>
       </header>
 
