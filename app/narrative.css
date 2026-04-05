@@ -99,7 +99,7 @@
 
 .hero-ghost {
     position: absolute;
-    bottom: -0.08em; right: -0.04em;
+    bottom: 0.15em; right: 0.02em;
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(80px, 12vw, 180px);
     font-weight: 300;
