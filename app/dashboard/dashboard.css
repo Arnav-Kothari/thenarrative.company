@@ -1,0 +1,128 @@
+/* ─── DASHBOARD NAV ──────────────────────── */
+.dash-nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.dash-nav-email {
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: var(--text-2);
+}
+
+/* ─── DASHBOARD HERO ─────────────────────── */
+.dash-hero {
+    padding: 160px 52px 80px;
+    border-bottom: 1px solid var(--border);
+}
+
+.dash-hero-content {
+    max-width: var(--max-w);
+    margin: 0 auto;
+}
+
+.dash-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(36px, 4.5vw, 64px);
+    line-height: 1.1;
+    color: var(--text);
+    margin-bottom: 16px;
+}
+
+.dash-sub {
+    font-size: clamp(15px, 1.5vw, 17px);
+    line-height: 1.7;
+    color: var(--text-2);
+    max-width: 480px;
+}
+
+/* ─── CLIENT CARDS ───────────────────────── */
+.dash-cards {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 64px 52px 100px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 24px;
+}
+
+.dash-card {
+    background: var(--bg-2);
+    padding: 36px 32px;
+    border: 1px solid var(--border);
+}
+
+.dash-card-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+}
+
+.dash-card-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.2;
+    color: var(--text);
+    margin-bottom: 24px;
+}
+
+/* ─── DELIVERABLE LINKS ──────────────────── */
+.dash-deliverables {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.dash-deliverable {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 14px 20px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text);
+    transition: border-color 0.25s, color 0.25s;
+}
+
+.dash-deliverable:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.dash-arrow {
+    font-size: 14px;
+    color: var(--text-2);
+    transition: transform 0.25s, color 0.25s;
+}
+
+.dash-deliverable:hover .dash-arrow {
+    transform: translateX(4px);
+    color: var(--accent);
+}
+
+/* ─── RESPONSIVE ─────────────────────────── */
+@media (max-width: 700px) {
+    .dash-hero {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    .dash-cards {
+        padding-left: 24px;
+        padding-right: 24px;
+        grid-template-columns: 1fr;
+    }
+
+    .dash-nav-email {
+        display: none;
+    }
+}

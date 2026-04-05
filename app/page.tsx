@@ -154,6 +154,7 @@ export default function Home() {
         <div style={{ display: 'flex', alignItems: 'center', gap: '28px' }}>
           <a href="/thesis" className="nav-link">Our Thesis</a>
           <a href="mailto:arnav.kothari@thenarrative.company" className="nav-link">Get in touch</a>
+          <a href="/dashboard" className="nav-login">Log in</a>
         </div>
       </nav>
 
@@ -212,29 +213,29 @@ export default function Home() {
         <div className="container">
           <div className="shift-left">
             <div className="shift-label reveal">The gap</div>
-            <h2 className="reveal">Your company ships category-defining work. The market barely notices.</h2>
+            <h2 className="reveal">Your comms team keeps your executives safe online. But safe doesn&apos;t build markets.</h2>
           </div>
           <div className="reveal" style={{ transitionDelay: '0.15s' }}>
             <div className="diagram">
               <div className="shift-pair">
-                <span className="old">One post, one platform</span>
+                <span className="old">Post to avoid risk</span>
                 <span className="arrow">&rarr;</span>
-                <span className="new">One moment, five surfaces</span>
+                <span className="new">Post to drive distribution</span>
               </div>
               <div className="shift-pair">
-                <span className="old">Comms writes, CEO approves</span>
+                <span className="old">Social as a comms channel</span>
                 <span className="arrow">&rarr;</span>
-                <span className="new">CEO voice, system amplifies</span>
+                <span className="new">Social as a marketing arm</span>
               </div>
               <div className="shift-pair">
-                <span className="old">Measure impressions</span>
+                <span className="old">Protect the narrative</span>
                 <span className="arrow">&rarr;</span>
-                <span className="new">Measure reshare depth</span>
+                <span className="new">Own the narrative</span>
               </div>
               <div className="shift-pair">
-                <span className="old">Campaign cadence</span>
+                <span className="old">Executive presence as checkbox</span>
                 <span className="arrow">&rarr;</span>
-                <span className="new">Platform-native cadence</span>
+                <span className="new">Executive presence as leverage</span>
               </div>
             </div>
           </div>

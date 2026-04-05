@@ -57,7 +57,10 @@ export default function ThesisPage() {
       {/* NAV */}
       <nav>
         <a href="/" className="logo">The Narrative Company</a>
-        <a href="mailto:arnav.kothari@thenarrative.company" className="nav-link">Get in touch</a>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '28px' }}>
+          <a href="mailto:arnav.kothari@thenarrative.company" className="nav-link">Get in touch</a>
+          <a href="/dashboard" className="nav-login">Log in</a>
+        </div>
       </nav>
 
       {/* HERO */}
