@@ -101,7 +101,7 @@
     position: absolute;
     bottom: -0.08em; right: -0.04em;
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(160px, 24vw, 340px);
+    font-size: clamp(80px, 12vw, 180px);
     font-weight: 300;
     color: var(--accent);
     opacity: 0.055;
