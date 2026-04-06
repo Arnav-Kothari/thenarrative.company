@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marc Benioff on X - One Page Snapshot</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #F6F1E9; --bg-2: #EDE7DB;
+    --text: #15130E; --text-2: #6B6157; --text-3: #A39888;
+    --accent: #C96A2B; --accent-dark: #B05A22;
+    --accent-glow: rgba(201,106,43,0.08); --accent-border: rgba(201,106,43,0.28);
+    --warn: #B8564F; --warn-glow: rgba(184,86,79,0.07); --warn-border: rgba(184,86,79,0.22);
+    --border: #DDD7CC; --border-strong: #C9C2B5; --card: #EDE7DB;
+  }
+  html, body { background: #E9E3D6; font-family: 'Inter', -apple-system, sans-serif; color: var(--text); -webkit-font-smoothing: antialiased; }
+  body { padding: 32px 0; display: flex; justify-content: center; }
+
+  /* THE PAGE - exact US Letter dimensions */
+  .page {
+    width: 8.5in;
+    height: 11in;
+    background: var(--bg);
+    box-shadow: 0 24px 60px rgba(21,19,14,0.18), 0 4px 12px rgba(21,19,14,0.08);
+    padding: 0.45in 0.55in 0.4in 0.55in;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* HEADER STRIP */
+  .top {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-bottom: 14px; border-bottom: 1px solid var(--border);
+  }
+  .logo {
+    position: relative; padding-top: 8px; display: inline-block;
+    font-size: 10px; font-weight: 400; letter-spacing: 0.32em; text-transform: uppercase; color: var(--text);
+  }
+  .logo::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: var(--accent); }
+  .top-meta { font-size: 9px; color: var(--text-2); letter-spacing: 0.22em; text-transform: uppercase; }
+
+  /* HEADLINE BLOCK (unused, kept for safety) */
+  .headline { display: none; }
+  .subtitle {
+    font-size: 11px; font-weight: 300; color: var(--text-2); margin-top: 8px;
+    line-height: 1.55; max-width: 6.6in;
+  }
+  .meta-row { display: flex; gap: 24px; margin-top: 10px; }
+  .meta-item { font-size: 8px; color: var(--text-3); letter-spacing: 0.22em; text-transform: uppercase; }
+  .meta-item strong { display: block; color: var(--text-2); font-weight: 500; font-size: 11px; letter-spacing: 0; text-transform: none; margin-top: 3px; }
+
+  /* SECTION LABEL */
+  .sec-label {
+    font-size: 9px; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent);
+    display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
+  }
+  .sec-label::before { content: ''; display: block; width: 16px; height: 1px; background: var(--accent); }
+
+  /* PILOT CARD */
+  .pilot {
+    background: var(--accent-glow); border: 1px solid var(--accent-border);
+    padding: 14px 18px 16px 18px; margin-top: 16px;
+  }
+  .pilot-label {
+    font-size: 9px; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 6px;
+  }
+  .pilot-title {
+    font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 500;
+    color: var(--text); line-height: 1.2; margin-bottom: 4px;
+  }
+  .pilot-title em { font-style: italic; color: var(--accent); font-weight: 500; }
+  .pilot-sub {
+    font-size: 10.5px; font-weight: 300; color: var(--text-2); line-height: 1.55; max-width: 6.4in;
+  }
+  .pilot-stats {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+    margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--accent-border);
+  }
+  .stat { display: flex; flex-direction: column; gap: 4px; }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 500;
+    color: var(--text); line-height: 1; letter-spacing: -0.01em;
+  }
+  .stat-label {
+    font-size: 9.5px; font-weight: 300; color: var(--text-2); line-height: 1.5;
+  }
+  .pilot-tail {
+    font-size: 10px; font-weight: 300; color: var(--text-2); line-height: 1.55;
+    margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--accent-border);
+    max-width: 6.4in;
+  }
+  .pilot-tail em { font-style: italic; color: var(--accent); font-weight: 400; }
+
+  /* SNAPSHOT TABLE */
+  .snapshot { margin-top: 22px; }
+  table.peers {
+    width: 100%; border-collapse: collapse; font-size: 10.5px; font-weight: 300;
+    background: var(--card); border: 1px solid var(--border);
+  }
+  table.peers thead th {
+    font-size: 8.5px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--text-3); padding: 7px 10px; text-align: right; border-bottom: 1px solid var(--border);
+    background: var(--bg-2);
+  }
+  table.peers thead th:first-child { text-align: left; }
+  table.peers tbody td {
+    padding: 7px 10px; text-align: right; color: var(--text-2); border-bottom: 1px solid var(--border);
+    font-variant-numeric: tabular-nums;
+  }
+  table.peers tbody tr:last-child td { border-bottom: none; }
+  table.peers tbody td:first-child { text-align: left; color: var(--text); font-weight: 500; }
+  table.peers tbody td .role { display: block; font-size: 9px; color: var(--text-3); font-weight: 300; margin-top: 1px; letter-spacing: 0.02em; }
+  table.peers tbody tr.marc {
+    background: var(--accent-glow);
+  }
+  table.peers tbody tr.marc td:first-child { color: var(--accent); position: relative; padding-left: 18px; }
+  table.peers tbody tr.marc td:first-child::before {
+    content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: var(--accent);
+  }
+  table.peers tbody tr.marc td { color: var(--text); font-weight: 500; }
+  table.peers tbody tr.marc td .role { color: var(--accent); }
+  .table-note { font-size: 8.5px; color: var(--text-3); margin-top: 6px; line-height: 1.5; }
+
+  /* TWO-COLUMN INSIGHT BLOCK */
+  .insights { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
+  .col {
+    background: var(--card); border: 1px solid var(--border); padding: 13px 14px 12px 14px;
+    display: flex; flex-direction: column;
+  }
+  .col.good { background: var(--accent-glow); border-color: var(--accent-border); }
+  .col.warn { background: var(--warn-glow); border-color: var(--warn-border); }
+  .col-label {
+    font-size: 8.5px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--text-3); margin-bottom: 3px;
+  }
+  .col.good .col-label { color: var(--accent); }
+  .col.warn .col-label { color: var(--warn); }
+  .col-title {
+    font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 500; line-height: 1.18;
+    color: var(--text); margin-bottom: 8px;
+  }
+  .col ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .col li {
+    font-size: 10px; font-weight: 300; color: var(--text-2); line-height: 1.5;
+    padding-left: 12px; position: relative;
+  }
+  .col li::before {
+    content: ''; position: absolute; left: 0; top: 7px; width: 6px; height: 1px; background: var(--accent);
+  }
+  .col.warn li::before { background: var(--warn); }
+  .col li strong { color: var(--text); font-weight: 500; }
+  .col.good li strong { color: var(--accent); }
+  .col.warn li strong { color: var(--warn); }
+
+  /* MOVES */
+  .moves { margin-top: 14px; }
+  .moves-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 6px; }
+  .move {
+    border: 1px solid var(--border-strong); padding: 13px 14px 14px 14px;
+    background: var(--bg); position: relative;
+  }
+  .move-num {
+    font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400;
+    font-size: 12px; color: var(--accent); letter-spacing: 0.04em; margin-bottom: 3px;
+  }
+  .move-title {
+    font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 500; line-height: 1.2;
+    color: var(--text); margin-bottom: 7px;
+  }
+  .move-desc {
+    font-size: 10px; font-weight: 300; color: var(--text-2); line-height: 1.55;
+  }
+  .move-desc strong { color: var(--text); font-weight: 500; }
+
+  /* FOOTER */
+  .foot {
+    margin-top: auto; padding-top: 10px; border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 8.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-3);
+  }
+  .foot .accent { color: var(--accent); }
+
+  /* PRINT */
+  @page { size: letter; margin: 0; }
+  @media print {
+    html, body { background: #fff; }
+    body { padding: 0; }
+    .page { box-shadow: none; width: 8.5in; height: 11in; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="top">
+    <span class="logo">The Narrative Company</span>
+    <span class="top-meta">For Marc Benioff &middot; 45-Day Pilot Recap &middot; Mar 2026</span>
+  </div>
+
+  <!-- PILOT CARD -->
+  <div class="pilot">
+    <div class="pilot-label">What worked in the pilot &middot; Moment 01</div>
+    <div class="pilot-title">FY26 Earnings - <em>"SaaSpocalypse"</em></div>
+    <p class="pilot-sub">We tested a stack of angles until Edward and Jacob locked onto the <em>"SaaSpocalypse"</em> counter-narrative. We drafted Marc's posts around it and ran the first orchestrated quote-post amplification across the Salesforce handle and 9 product handles.</p>
+    <div class="pilot-stats">
+      <div class="stat">
+        <div class="stat-num">350K</div>
+        <div class="stat-label">Strong organic reach for an earnings release on Marc's X.</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">10K</div>
+        <div class="stat-label">LinkedIn likes - second-highest engagement on Marc's LinkedIn in the trailing 12 months.</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">166K</div>
+        <div class="stat-label">One of the Salesforce handle's strongest organic moments to date.</div>
+      </div>
+    </div>
+    <p class="pilot-tail">The bigger unlock: that spicier tone has stuck. The Salesforce handle is running <em>"medium spicy"</em> on its own now, Slack shows up in the comments, and the corporate voice has gotten sharper.</p>
+  </div>
+
+  <!-- SNAPSHOT TABLE -->
+  <div class="snapshot">
+    <div class="sec-label">Marc vs. the peer set on X &middot; Jan - Mar 2026</div>
+    <table class="peers">
+      <thead>
+        <tr>
+          <th>CEO</th>
+          <th>Posts/wk</th>
+          <th>Median Views</th>
+          <th>Median Likes</th>
+          <th>Engagement<br>Rate</th>
+          <th>Sentiment<br>(pos:neg)</th>
+          <th>High-Value<br>Commenters</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Sundar Pichai<span class="role">Google</span></td>
+          <td>2.8</td>
+          <td>347K</td>
+          <td>5,566</td>
+          <td>1.39%</td>
+          <td>3 : 1</td>
+          <td>16</td>
+        </tr>
+        <tr>
+          <td>Satya Nadella<span class="role">Microsoft</span></td>
+          <td>2.2</td>
+          <td>682K</td>
+          <td>3,053</td>
+          <td>0.99%</td>
+          <td>1 : 1</td>
+          <td>9</td>
+        </tr>
+        <tr>
+          <td>Patrick Collison<span class="role">Stripe</span></td>
+          <td>0.5</td>
+          <td>124K</td>
+          <td>781</td>
+          <td>0.68%</td>
+          <td>2 : 1</td>
+          <td>78</td>
+        </tr>
+        <tr class="marc">
+          <td>Marc Benioff<span class="role">Salesforce</span></td>
+          <td>4.2</td>
+          <td>51K</td>
+          <td>190</td>
+          <td>0.51%</td>
+          <td>2 : 1</td>
+          <td>30</td>
+        </tr>
+        <tr>
+          <td>Bill McDermott<span class="role">ServiceNow</span></td>
+          <td>0.5</td>
+          <td>7K</td>
+          <td>75</td>
+          <td>1.18%</td>
+          <td>6 : 1</td>
+          <td>9</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- MOVES -->
+  <div class="moves">
+    <div class="sec-label">Three things worth experimenting with</div>
+    <div class="moves-grid">
+      <div class="move">
+        <div class="move-num">Move 01</div>
+        <div class="move-title">Keep the casual voice. Layer in depth.</div>
+        <div class="move-desc">Your in-the-moment posting is part of why the comment section is so warm - keep it. Two small dials: bring weekly cadence from <strong>4.2 down to ~3 posts</strong>, and add <strong>1-2 deeper, more thoughtful posts a month</strong>. The mix lifts your per-post average and pulls the right audience in.</div>
+      </div>
+      <div class="move">
+        <div class="move-num">Move 02</div>
+        <div class="move-title">Lead with takes on cultural moments.</div>
+        <div class="move-desc">What breaks through across the field is short, opinionated takes on cultural and industry moments - not product announcements. Your <strong>Figure 03 post ("Impressive.")</strong> is exactly the shape. Lean into perspectives on what the world is already watching.</div>
+      </div>
+      <div class="move">
+        <div class="move-num">Move 03</div>
+        <div class="move-title">Reply in your own comment section.</div>
+        <div class="move-desc">Pichai replied to <strong>25 of his own comment threads</strong> in this window - more than any peer - and runs the highest engagement rate and the second-highest comment sentiment in the set. Even a few replies a week to the founders who already show up for you would compound fast.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="foot">
+    <span><span class="accent">The Narrative Company</span> &middot; For Marc Benioff</span>
+    <span>Source: X API &middot; Internal analysis</span>
+  </div>
+
+</div>
+
+</body>
+</html>
