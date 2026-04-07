@@ -264,11 +264,14 @@
         }
 
         .monogram-mark::before {
+            /* Bar matches the italic N's cap-line (visual top) extent,
+               not the full "N." bbox. Italic serif Ns fan out wide at the
+               bottom but stay narrow at the top where the bar sits. */
             content: '';
             position: absolute;
             top: 0;
-            left: 0;
-            width: 62%;
+            left: 13%;
+            width: 68.7%;
             height: 1px;
         }
 

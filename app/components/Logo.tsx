@@ -63,6 +63,12 @@ export default function Logo({
 
   if (variant === "monogram") {
     const px = size ?? 120;
+    // The bar is sized and positioned to match the italic N's cap-line
+    // (its visual top edge), not the full ink bbox. Italic serif Ns fan
+    // out at the bottom serifs but stay narrow at the top where the bar
+    // sits. Values measured empirically from Cormorant Garamond Italic
+    // Medium: cap-line width ≈ 58.5% of font-size, cap-line left offset
+    // ≈ 11.1% of font-size from the glyph's draw origin.
     return (
       <span
         aria-label="The Narrative Company"
@@ -80,8 +86,8 @@ export default function Logo({
           style={{
             position: "absolute",
             top: 0,
-            left: 0,
-            width: px * 0.62,
+            left: px * 0.111,
+            width: px * 0.585,
             height: 1,
             background: barColor,
           }}
@@ -89,7 +95,7 @@ export default function Logo({
         <span
           style={{
             fontFamily: "'Cormorant Garamond', serif",
-            fontWeight: 400,
+            fontWeight: 500,
             fontStyle: "italic",
             fontSize: px,
             lineHeight: 0.9,

@@ -2,7 +2,7 @@
   <title>The Narrative Company — N. Monogram</title>
   <desc>Reduced mark. Italic Cormorant Garamond "N" with amber period and signature bar above, on a warm cream tile.</desc>
   <rect width="400" height="400" fill="#EDE7DB"/>
-  <rect x="100" y="80" width="200" height="6" fill="#C96A2B"/>
+  <rect x="105" y="80" width="175" height="6" fill="#C96A2B"/>
   <text x="200" y="310"
         text-anchor="middle"
         font-family="'Cormorant Garamond', 'Playfair Display', 'Times New Roman', Times, serif"
