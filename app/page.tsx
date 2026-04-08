@@ -164,8 +164,8 @@ export default function Home() {
         <div className="hero-content">
           <div className="hero-tag">Executive narrative</div>
           <h1 className="hero-headline">
-            <span className="sc" data-text="Your company ships fast. Your story should travel faster.">
-              Your company ships fast. Your story should travel faster.
+            <span className="sc" data-text="Most CEO social reads like an ad. The best CEOs don't.">
+              Most CEO social reads like an ad. The best CEOs don&apos;t.
             </span>
           </h1>
           <p className="hero-sub">
