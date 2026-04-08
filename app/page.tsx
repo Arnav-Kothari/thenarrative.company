@@ -226,7 +226,7 @@ export default function Home() {
       {/* WHAT WE DO */}
       <section className="pillars">
         <div className="pillars-top reveal">
-          <h2>A narrative system, not a content calendar.</h2>
+          <h2>A narrative system for every company moment.</h2>
           <p>Every company moment becomes a coordinated multi-surface event. Zero paid spend - every impression earned.</p>
         </div>
         <div className="pillars-grid stagger" id="cards">
@@ -252,7 +252,7 @@ export default function Home() {
       <section className="how">
         <div className="how-header reveal">
           <div className="section-label">How it works</div>
-          <h2>Built to compound, not expire.</h2>
+          <h2>Designed to compound over time.</h2>
         </div>
         <div className="steps stagger4">
           <div className="step">
