@@ -164,8 +164,8 @@ export default function Home() {
         <div className="hero-content">
           <div className="hero-tag">Executive narrative</div>
           <h1 className="hero-headline">
-            <span className="sc" data-text="Most CEO socials are recycled press. We make sure they don't read like ads.">
-              Most CEO socials are recycled press. We make sure they don&apos;t read like ads.
+            <span className="sc" data-text="Most CEO socials are recycled press. We build narratives that cut through the noise.">
+              Most CEO socials are recycled press. We build narratives that cut through the noise.
             </span>
           </h1>
           <p className="hero-sub">
