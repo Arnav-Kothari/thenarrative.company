@@ -2,6 +2,10 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 export function proxy(request: NextRequest) {
+  if (process.env.NODE_ENV === 'development') {
+    return NextResponse.next();
+  }
+
   const jwt = request.headers.get('cf-access-jwt-assertion');
 
   if (!jwt) {
@@ -12,5 +16,12 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/dashboard/:path*', '/clients/:path*'],
+  matcher: [
+    '/dashboard/:path*',
+    '/clients/:path*',
+    '/api/x-posts/:path*',
+    '/api/score/:path*',
+    '/api/angles/:path*',
+    '/api/slack-send/:path*',
+  ],
 };

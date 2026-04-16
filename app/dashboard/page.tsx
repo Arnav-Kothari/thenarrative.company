@@ -35,6 +35,7 @@ export default async function DashboardPage() {
       label: 'Corporate',
       deliverables: [
         { title: 'Competitive Analysis', href: '/clients/salesforce/analysis.html' },
+        { title: 'X Engagement Pipeline', href: '/dashboard/salesforce' },
       ],
     },
   ];
