@@ -56,10 +56,14 @@ async function xFetch(path: string, token: string) {
   return res.json();
 }
 
+const HOURS_WINDOW = 48;
+const PAGE_SIZE = 100; // X API max per page for list tweets
+const MAX_PAGES = 10; // cap total pagination at 1000 tweets
+
 export async function GET(req: Request) {
   const url = new URL(req.url);
-  const max = url.searchParams.get("max") ?? "25";
   const mode = url.searchParams.get("mode") ?? "live";
+  const sinceId = url.searchParams.get("since_id");
 
   if (mode === "demo") {
     return NextResponse.json({ posts: SEED_POSTS, source: "seed" });
@@ -74,13 +78,6 @@ export async function GET(req: Request) {
       { status: 500 }
     );
   }
-
-  const params = new URLSearchParams({
-    max_results: max,
-    "tweet.fields": "created_at,public_metrics,author_id,lang",
-    expansions: "author_id",
-    "user.fields": "username,name,profile_image_url",
-  });
 
   try {
     type XUser = { id: string; username: string; name: string; profile_image_url?: string };
@@ -98,27 +95,80 @@ export async function GET(req: Request) {
         impression_count?: number;
       };
     };
-    type XData = { data?: XTweet[]; includes?: { users?: XUser[] } };
+    type XData = {
+      data?: XTweet[];
+      includes?: { users?: XUser[] };
+      meta?: { next_token?: string; result_count?: number };
+    };
 
     const oauth = userClient();
-    let data: XData;
-    if (oauth) {
-      data = (await oauth.v2.get(`lists/${listId}/tweets`, {
-        max_results: parseInt(max),
-        "tweet.fields": "created_at,public_metrics,author_id,lang",
-        expansions: "author_id",
-        "user.fields": "username,name,profile_image_url",
-      })) as unknown as XData;
-    } else if (token) {
-      data = (await xFetch(`/lists/${listId}/tweets?${params.toString()}`, token)) as XData;
-    } else {
+    if (!oauth && !token) {
       return NextResponse.json(
         { error: "Missing X auth credentials in .env.local" },
         { status: 500 }
       );
     }
+
+    // When polling for real-time updates, paginate until we reach the
+    // since_id. When doing initial load, paginate until we reach HOURS_WINDOW old.
+    const isPolling = !!sinceId;
+    const cutoffMs = Date.now() - HOURS_WINDOW * 3600 * 1000;
+    const sinceBI = sinceId ? BigInt(sinceId) : BigInt(0);
+
+    const allTweets: XTweet[] = [];
+    const allUsers: XUser[] = [];
+    let paginationToken: string | undefined = undefined;
+
+    for (let page = 0; page < MAX_PAGES; page++) {
+      const queryParams: Record<string, string | number> = {
+        max_results: PAGE_SIZE,
+        "tweet.fields": "created_at,public_metrics,author_id,lang",
+        expansions: "author_id",
+        "user.fields": "username,name,profile_image_url",
+      };
+      if (paginationToken) queryParams.pagination_token = paginationToken;
+
+      let pageData: XData;
+      if (oauth) {
+        pageData = (await oauth.v2.get(
+          `lists/${listId}/tweets`,
+          queryParams
+        )) as unknown as XData;
+      } else {
+        const qs = new URLSearchParams(
+          Object.fromEntries(Object.entries(queryParams).map(([k, v]) => [k, String(v)]))
+        );
+        pageData = (await xFetch(
+          `/lists/${listId}/tweets?${qs.toString()}`,
+          token!
+        )) as XData;
+      }
+
+      const tweets = pageData.data ?? [];
+      const users = pageData.includes?.users ?? [];
+      allUsers.push(...users);
+
+      // Accumulate while tweets meet the criteria, stop when we cross a boundary.
+      let stop = false;
+      for (const t of tweets) {
+        if (isPolling) {
+          if (BigInt(t.id) <= sinceBI) {
+            stop = true;
+            break;
+          }
+        } else if (new Date(t.created_at).getTime() < cutoffMs) {
+          stop = true;
+          break;
+        }
+        allTweets.push(t);
+      }
+
+      paginationToken = pageData.meta?.next_token;
+      if (stop || !paginationToken) break;
+    }
+
     const users: Record<string, XPost["author"]> = {};
-    for (const u of data.includes?.users ?? []) {
+    for (const u of allUsers) {
       users[u.id] = {
         id: u.id,
         username: u.username,
@@ -126,8 +176,9 @@ export async function GET(req: Request) {
         profile_image_url: u.profile_image_url,
       };
     }
-    const posts: XPost[] = (data.data ?? [])
+    const posts: XPost[] = allTweets
       .filter((t) => !t.lang || t.lang === "en")
+      .filter((t) => !t.text.startsWith("RT @"))
       .map((t) => {
         const author = users[t.author_id] ?? {
           id: t.author_id,
@@ -144,12 +195,11 @@ export async function GET(req: Request) {
         };
       });
 
-    if (posts.length === 0) {
+    if (posts.length === 0 && !isPolling) {
       return NextResponse.json({
         posts: [],
         source: "live",
-        warning:
-          "X returned 0 posts for this list. If the list is private, the bearer token can't read it - make it public or use OAuth user auth.",
+        warning: "X returned 0 posts for this list in the last 48 hours.",
       });
     }
     return NextResponse.json({ posts, source: "live" });

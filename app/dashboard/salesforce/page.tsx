@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { DEFAULT_RUBRIC } from "../../api/_lib/rubric";
+import { DEFAULT_TONE } from "../../api/_lib/tone";
 import "./demo.css";
 
 type Post = {
@@ -17,6 +18,28 @@ type Score = { id: string; score: number; rationale: string; flags: string[] };
 type Angle = { angle: string; reply: string };
 
 const LIVE_POLL_MS = 60_000;
+const STORAGE_KEY = "sf-demo-v2";
+
+type PersistedState = {
+  live: { posts: Post[]; visibleCount: number; initialized: boolean; lastSync: string | null };
+  demo: { posts: Post[]; visibleCount: number; initialized: boolean; lastSync: string | null };
+  scores: Record<string, Score>;
+  angles: Record<string, Angle[]>;
+  copiedIds: string[];
+  rubric?: string;
+  tone?: string;
+};
+
+function loadPersisted(): PersistedState | null {
+  if (typeof window === "undefined") return null;
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return null;
+    return JSON.parse(raw) as PersistedState;
+  } catch {
+    return null;
+  }
+}
 const NOW_TICK_MS = 15_000;
 
 function timeAgo(date: Date | null, now: Date): string {
@@ -39,12 +62,15 @@ export default function SalesforceDemoPage() {
   const [visibleCount, setVisibleCount] = useState(0);
   const [scores, setScores] = useState<Record<string, Score>>({});
   const [angles, setAngles] = useState<Record<string, Angle[]>>({});
+  const [hydrated, setHydrated] = useState(false);
 
   const [threshold, setThreshold] = useState(70);
   const [floor, setFloor] = useState(10);
   const [rubricOpen, setRubricOpen] = useState(false);
+  const [rubricTab, setRubricTab] = useState<"scoring" | "tone">("scoring");
   const [rubric, setRubric] = useState(DEFAULT_RUBRIC);
-  const [mode, setMode] = useState<"live" | "demo">("demo");
+  const [tone, setTone] = useState(DEFAULT_TONE);
+  const [mode, setMode] = useState<"live" | "demo">("live");
   const [source, setSource] = useState<string | null>(null);
   const [lastSync, setLastSync] = useState<Date | null>(null);
   const [now, setNow] = useState<Date>(new Date());
@@ -54,11 +80,29 @@ export default function SalesforceDemoPage() {
   const [copiedIds, setCopiedIds] = useState<Set<string>>(new Set());
   const [err, setErr] = useState<string | null>(null);
 
-  const isInitialized = useRef(false);
+  // Cache the posts/visibleCount/init/lastSync per mode so switching tabs
+  // doesn't wipe the state and force us to re-fetch + re-score.
+  // Scores/angles/copiedIds are keyed by post ID and carry over naturally.
+  type ModeCache = {
+    posts: Post[];
+    visibleCount: number;
+    initialized: boolean;
+    lastSync: Date | null;
+  };
+  const modeCache = useRef<{ live: ModeCache; demo: ModeCache }>({
+    live: { posts: [], visibleCount: 0, initialized: false, lastSync: null },
+    demo: { posts: [], visibleCount: 0, initialized: false, lastSync: null },
+  });
+  const prevMode = useRef<"live" | "demo">("live");
+
   const rubricRef = useRef("");
+  const toneRef = useRef("");
   useEffect(() => {
     rubricRef.current = rubric;
   }, [rubric]);
+  useEffect(() => {
+    toneRef.current = tone;
+  }, [tone]);
 
   const visiblePosts = useMemo(() => allPosts.slice(0, visibleCount), [allPosts, visibleCount]);
   const sortedPosts = useMemo(() => {
@@ -77,16 +121,87 @@ export default function SalesforceDemoPage() {
     }).length;
   }, [visiblePosts, scores, floor]);
 
+  // one-time hydration from localStorage on mount (client only) to avoid
+  // server/client HTML mismatch
+  useEffect(() => {
+    const persisted = loadPersisted();
+    if (persisted) {
+      modeCache.current.live = {
+        posts: persisted.live.posts ?? [],
+        visibleCount: persisted.live.visibleCount ?? 0,
+        initialized: persisted.live.initialized ?? false,
+        lastSync: persisted.live.lastSync ? new Date(persisted.live.lastSync) : null,
+      };
+      modeCache.current.demo = {
+        posts: persisted.demo.posts ?? [],
+        visibleCount: persisted.demo.visibleCount ?? 0,
+        initialized: persisted.demo.initialized ?? false,
+        lastSync: persisted.demo.lastSync ? new Date(persisted.demo.lastSync) : null,
+      };
+      const current = modeCache.current[mode];
+      setAllPosts(current.posts);
+      setVisibleCount(current.visibleCount);
+      setScores(persisted.scores ?? {});
+      setAngles(persisted.angles ?? {});
+      setCopiedIds(new Set(persisted.copiedIds ?? []));
+      setLastSync(current.lastSync);
+      if (persisted.rubric) setRubric(persisted.rubric);
+      if (persisted.tone) setTone(persisted.tone);
+    }
+    setHydrated(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   // tick for "last sync Xm ago" - slower tick to avoid re-render jank
   useEffect(() => {
     const t = setInterval(() => setNow(new Date()), NOW_TICK_MS);
     return () => clearInterval(t);
   }, []);
 
+  // persist state to localStorage so a page refresh doesn't wipe scored posts
+  useEffect(() => {
+    if (!hydrated) return;
+    if (typeof window === "undefined") return;
+    try {
+      const snapshot: PersistedState = {
+        live: {
+          posts: modeCache.current.live.posts,
+          visibleCount: modeCache.current.live.visibleCount,
+          initialized: modeCache.current.live.initialized,
+          lastSync: modeCache.current.live.lastSync?.toISOString() ?? null,
+        },
+        demo: {
+          posts: modeCache.current.demo.posts,
+          visibleCount: modeCache.current.demo.visibleCount,
+          initialized: modeCache.current.demo.initialized,
+          lastSync: modeCache.current.demo.lastSync?.toISOString() ?? null,
+        },
+        scores,
+        angles,
+        copiedIds: Array.from(copiedIds),
+        rubric,
+        tone,
+      };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(snapshot));
+    } catch {
+      // quota exceeded or serialization failed - silent
+    }
+  }, [allPosts, visibleCount, scores, angles, copiedIds, lastSync, rubric, tone, hydrated]);
+
   async function doFetch(modeOverride?: "live" | "demo") {
     const m = modeOverride ?? mode;
+    const cache = modeCache.current[m];
     try {
-      const r = await fetch(`/api/x-posts?max=25&mode=${m}`);
+      const newestId =
+        m === "live" && cache.initialized && cache.posts.length > 0
+          ? cache.posts.reduce(
+              (max, p) => (BigInt(p.id) > BigInt(max) ? p.id : max),
+              cache.posts[0].id
+            )
+          : null;
+      const qs = new URLSearchParams({ mode: m });
+      if (newestId) qs.set("since_id", newestId);
+      const r = await fetch(`/api/x-posts?${qs.toString()}`);
       const data = await r.json();
       const incoming: Post[] = data.posts ?? [];
       setSource(data.source ?? null);
@@ -94,42 +209,61 @@ export default function SalesforceDemoPage() {
       else if (data.warning) setErr(data.warning);
       else setErr(null);
 
-      if (!isInitialized.current) {
-        isInitialized.current = true;
+      const cutoffMs = Date.now() - 48 * 3600 * 1000;
+      if (!cache.initialized) {
+        cache.initialized = true;
+        cache.posts = incoming;
+        cache.visibleCount = incoming.length;
         setAllPosts(incoming);
         setVisibleCount(incoming.length);
       } else {
-        setAllPosts((prev) => {
-          const existing = new Set(prev.map((p) => p.id));
-          const newOnes = incoming.filter((p) => !existing.has(p.id));
-          if (newOnes.length === 0) return prev;
-          setVisibleCount((c) => c + newOnes.length);
-          return [...newOnes, ...prev];
-        });
+        const existing = new Set(cache.posts.map((p) => p.id));
+        const newOnes = incoming.filter((p) => !existing.has(p.id));
+        // Prune posts older than 48h (live only).
+        const pruned =
+          m === "live"
+            ? cache.posts.filter((p) => new Date(p.created_at).getTime() >= cutoffMs)
+            : cache.posts;
+        const merged = [...newOnes, ...pruned];
+        cache.posts = merged;
+        cache.visibleCount = merged.length;
+        setAllPosts(merged);
+        setVisibleCount(merged.length);
       }
-      setLastSync(new Date());
+      cache.lastSync = new Date();
+      setLastSync(cache.lastSync);
     } catch (e) {
       setErr(e instanceof Error ? e.message : "fetch failed");
     }
   }
 
   async function scoreBatch(batch: Post[]) {
+    // Chunk into smaller requests so the first results show up fast
+    // instead of waiting for all 200+ posts to finish scoring.
+    const CHUNK = 30;
     try {
-      const r = await fetch("/api/score", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ posts: batch, rubric: rubricRef.current || undefined }),
-      });
-      const d = await r.json();
-      if (!r.ok) throw new Error(d.error ?? "scoring failed");
-      setScores((prev) => {
-        const next = { ...prev };
-        for (const s of d.scores as Score[]) next[s.id] = s;
-        return next;
-      });
+      for (let i = 0; i < batch.length; i += CHUNK) {
+        const chunk = batch.slice(i, i + CHUNK);
+        const r = await fetch("/api/score", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ posts: chunk, rubric: rubricRef.current || undefined }),
+        });
+        const d = await r.json();
+        if (!r.ok) throw new Error(d.error ?? "scoring failed");
+        setScores((prev) => {
+          const next = { ...prev };
+          for (const s of d.scores as Score[]) next[s.id] = s;
+          return next;
+        });
+        setScoringIds((prev) => {
+          const next = new Set(prev);
+          chunk.forEach((p) => next.delete(p.id));
+          return next;
+        });
+      }
     } catch (e) {
       setErr(e instanceof Error ? e.message : "scoring failed");
-    } finally {
       setScoringIds((prev) => {
         const next = new Set(prev);
         batch.forEach((p) => next.delete(p.id));
@@ -140,16 +274,29 @@ export default function SalesforceDemoPage() {
 
   // reset + initial fetch whenever mode changes
   useEffect(() => {
-    setAllPosts([]);
-    setVisibleCount(0);
-    setScores({});
-    setAngles({});
-    setCopiedIds(new Set());
+    if (!hydrated) return;
+    const prev = prevMode.current;
+    if (prev !== mode) {
+      modeCache.current[prev] = {
+        posts: allPosts,
+        visibleCount,
+        initialized: modeCache.current[prev].initialized,
+        lastSync: modeCache.current[prev].lastSync,
+      };
+    }
+    prevMode.current = mode;
+
+    const cache = modeCache.current[mode];
+    setAllPosts(cache.posts);
+    setVisibleCount(cache.visibleCount);
+    setLastSync(cache.lastSync);
     setScoringIds(new Set());
-    isInitialized.current = false;
-    void doFetch(mode);
+
+    if (!cache.initialized) {
+      void doFetch(mode);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mode]);
+  }, [mode, hydrated]);
 
   // auto-poll (live only) - demo mode is static, no streaming
   useEffect(() => {
@@ -191,7 +338,7 @@ export default function SalesforceDemoPage() {
       const r = await fetch("/api/angles", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ post }),
+        body: JSON.stringify({ post, tone: toneRef.current || undefined }),
       });
       const d = await r.json();
       if (!r.ok) throw new Error(d.error ?? "angles failed");
@@ -348,12 +495,56 @@ export default function SalesforceDemoPage() {
             </button>
           </div>
           {rubricOpen && (
-            <textarea
-              className="sf-rubric"
-              style={{ marginTop: 16 }}
-              value={rubric}
-              onChange={(e) => setRubric(e.target.value)}
-            />
+            <div className="sf-rubric-panel">
+              <div className="sf-rubric-tabs">
+                <button
+                  className={`sf-rubric-tab ${rubricTab === "scoring" ? "active" : ""}`}
+                  onClick={() => setRubricTab("scoring")}
+                >
+                  Scoring rubric
+                  <span className="sf-rubric-tab-sub">when to engage</span>
+                </button>
+                <button
+                  className={`sf-rubric-tab ${rubricTab === "tone" ? "active" : ""}`}
+                  onClick={() => setRubricTab("tone")}
+                >
+                  Voice rubric
+                  <span className="sf-rubric-tab-sub">how to sound</span>
+                </button>
+                <div className="sf-rubric-actions">
+                  <button
+                    className="sf-btn ghost"
+                    style={{ padding: "6px 12px", fontSize: 10 }}
+                    onClick={() => {
+                      if (rubricTab === "scoring") setRubric(DEFAULT_RUBRIC);
+                      else setTone(DEFAULT_TONE);
+                    }}
+                  >
+                    Reset to default
+                  </button>
+                </div>
+              </div>
+              {rubricTab === "scoring" ? (
+                <textarea
+                  key="scoring"
+                  className="sf-rubric"
+                  value={rubric}
+                  onChange={(e) => setRubric(e.target.value)}
+                />
+              ) : (
+                <textarea
+                  key="tone"
+                  className="sf-rubric"
+                  value={tone}
+                  onChange={(e) => setTone(e.target.value)}
+                />
+              )}
+              <div className="sf-rubric-hint">
+                Edits save automatically. {rubricTab === "scoring"
+                  ? "Applies to the next batch of posts scored."
+                  : "Applies to the next angles drafted."}
+              </div>
+            </div>
           )}
         </div>
       </section>

@@ -1,29 +1,9 @@
 import { NextResponse } from "next/server";
 import Anthropic from "@anthropic-ai/sdk";
+import { DEFAULT_TONE } from "../_lib/tone";
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
-
-const SALESFORCE_VOICE = `You are drafting public reply options that @salesforce could post in response to a tweet.
-
-Voice and posture (Salesforce's X engagement tenets):
-- Lead with perspective, not promotion. Add something to the conversation; don't pitch.
-- Speak with informed confidence. Never dismissive, never correcting; we add, we don't correct.
-- Sound like a trusted expert in the room: curious, sharp, worth listening to.
-- Prioritize AI, agents, industry transformation, enterprise future of work.
-- No product pitches. No hashtags. No links. No emojis unless natural.
-- Keep each reply to 1-2 sentences, under 240 characters.
-- CRITICAL: Never use em dashes (—) or en dashes (–). Use a hyphen (-), comma, or period instead. This is non-negotiable.
-- Avoid the "X, not Y" contrast pattern (e.g. "A system, not a calendar"). State what the thing IS directly.
-- Goal: drive a reply from the original author.
-
-Return ONLY a JSON array of exactly 3 objects:
-[
-  {"angle": "short label (3-6 words) describing the take", "reply": "the actual tweet reply text"},
-  ...
-]
-
-Each angle should take a genuinely different approach (e.g. one zooms out to the industry, one adds a concrete data point or example, one asks a sharp question that invites their response). No two replies should sound the same.`;
 
 export async function POST(req: Request) {
   const apiKey = process.env.ANTHROPIC_API_KEY;
@@ -31,13 +11,15 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Missing ANTHROPIC_API_KEY" }, { status: 500 });
   }
 
-  const { post } = (await req.json()) as {
+  const { post, tone } = (await req.json()) as {
     post: {
       id: string;
       text: string;
       author: { username: string; name: string };
     };
+    tone?: string;
   };
+  const voice = tone || DEFAULT_TONE;
 
   const client = new Anthropic({ apiKey });
 
@@ -45,7 +27,7 @@ export async function POST(req: Request) {
     const msg = await client.messages.create({
       model: "claude-opus-4-6",
       max_tokens: 800,
-      system: SALESFORCE_VOICE,
+      system: voice,
       messages: [
         {
           role: "user",
