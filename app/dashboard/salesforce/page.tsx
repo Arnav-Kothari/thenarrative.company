@@ -381,6 +381,16 @@ export default function SalesforceDemoPage() {
         <span className="sf-wip-label">Work in progress</span>
         <span className="sf-wip-text">This tool is still being built and is not ready for production use.</span>
       </div>
+      {sortedPosts.length === 0 && hydrated && (
+        <div className="sf-wip" style={{ borderLeftColor: "var(--steel)" }}>
+          <span className="sf-wip-dot" style={{ background: "var(--steel)" }} />
+          <span className="sf-wip-label" style={{ color: "var(--steel)" }}>First load</span>
+          <span className="sf-wip-text">
+            If this is your first time opening this tab, the feed needs about 2 minutes to
+            fully fetch and score posts. It will populate automatically.
+          </span>
+        </div>
+      )}
       <div className="sf-eyebrow">Salesforce · X engagement pipeline</div>
       <h1 className="sf-title">From the top 10K to the right reply.</h1>
       <p className="sf-sub">

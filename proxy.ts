@@ -6,7 +6,9 @@ export function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
-  const jwt = request.headers.get('cf-access-jwt-assertion');
+  const jwt =
+    request.headers.get('cf-access-jwt-assertion') ||
+    request.cookies.get('CF_Authorization')?.value;
 
   if (!jwt) {
     return new NextResponse('Forbidden', { status: 403 });
