@@ -79,6 +79,7 @@ export default function SalesforceDemoPage() {
   const [anglesLoading, setAnglesLoading] = useState<Record<string, boolean>>({});
   const [copiedIds, setCopiedIds] = useState<Set<string>>(new Set());
   const [err, setErr] = useState<string | null>(null);
+  const [topAccountsExpanded, setTopAccountsExpanded] = useState(false);
 
   // Cache the posts/visibleCount/init/lastSync per mode so switching tabs
   // doesn't wipe the state and force us to re-fetch + re-score.
@@ -120,6 +121,49 @@ export default function SalesforceDemoPage() {
       return s && s.score < floor;
     }).length;
   }, [visiblePosts, scores, floor]);
+
+  type AccountAgg = {
+    username: string;
+    name: string;
+    postCount: number;
+    scoredCount: number;
+    avgScore: number;
+    maxScore: number;
+    topPost: Post | null;
+  };
+
+  const topAccounts = useMemo<AccountAgg[]>(() => {
+    const byUser = new Map<string, { name: string; posts: Post[]; scored: { post: Post; score: number }[] }>();
+    for (const p of allPosts) {
+      const key = p.author.username;
+      if (!byUser.has(key)) byUser.set(key, { name: p.author.name, posts: [], scored: [] });
+      const entry = byUser.get(key)!;
+      entry.posts.push(p);
+      const s = scores[p.id];
+      if (s) entry.scored.push({ post: p, score: s.score });
+    }
+    const aggs: AccountAgg[] = [];
+    for (const [username, { name, posts, scored }] of byUser) {
+      if (scored.length === 0) continue;
+      const max = Math.max(...scored.map((x) => x.score));
+      const avg = scored.reduce((a, b) => a + b.score, 0) / scored.length;
+      const top = scored.slice().sort((a, b) => b.score - a.score)[0].post;
+      aggs.push({
+        username,
+        name,
+        postCount: posts.length,
+        scoredCount: scored.length,
+        avgScore: avg,
+        maxScore: max,
+        topPost: top,
+      });
+    }
+    aggs.sort((a, b) => {
+      if (b.maxScore !== a.maxScore) return b.maxScore - a.maxScore;
+      return b.avgScore - a.avgScore;
+    });
+    return aggs;
+  }, [allPosts, scores]);
 
   // one-time hydration from localStorage on mount (client only) to avoid
   // server/client HTML mismatch
@@ -594,7 +638,7 @@ export default function SalesforceDemoPage() {
             <div key={p.id} className={`sf-post ${s ? (above ? "above" : "below") : ""}`}>
               <div className="sf-score">
                 <div className={`sf-score-num ${above ? "hi" : ""}`}>
-                  {isScoring ? <span className="sf-loading" /> : s ? s.score : "—"}
+                  {isScoring ? <span className="sf-loading" /> : s ? s.score : "-"}
                 </div>
                 <div className="sf-score-label">Score</div>
               </div>
@@ -645,6 +689,83 @@ export default function SalesforceDemoPage() {
             </div>
           );
         })}
+      </section>
+
+      {/* Section 4: Top accounts */}
+      <section className="sf-section">
+        <div className="sf-section-head">
+          <span className="sf-section-num">04</span>
+          <span className="sf-section-title">Top accounts</span>
+          <span className="sf-section-hint">
+            {topAccounts.length} scored · ranked by highest single-post score
+          </span>
+        </div>
+        {topAccounts.length === 0 ? (
+          <div className="sf-empty">Waiting for scores…</div>
+        ) : (
+          <div className="sf-card">
+            <div className="sf-accounts-head">
+              <span>#</span>
+              <span>Account</span>
+              <span>Posts</span>
+              <span>Avg</span>
+              <span>Max</span>
+              <span>Highest-scoring post</span>
+            </div>
+            {(topAccountsExpanded ? topAccounts : topAccounts.slice(0, 20)).map((a, i) => (
+              <div key={a.username} className="sf-account-row">
+                <span className="sf-account-rank">{i + 1}</span>
+                <span className="sf-account-who">
+                  <a
+                    href={`https://x.com/${a.username}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="sf-account-name"
+                  >
+                    {a.name}
+                  </a>
+                  <span className="sf-account-handle">@{a.username}</span>
+                </span>
+                <span className="sf-account-count">
+                  {a.scoredCount}
+                  {a.postCount !== a.scoredCount ? ` / ${a.postCount}` : ""}
+                </span>
+                <span className="sf-account-avg">{Math.round(a.avgScore)}</span>
+                <span className={`sf-account-max ${a.maxScore >= threshold ? "hi" : ""}`}>
+                  {a.maxScore}
+                </span>
+                <span className="sf-account-top">
+                  {a.topPost ? (
+                    <a
+                      href={a.topPost.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="sf-account-top-link"
+                    >
+                      {a.topPost.text.length > 140
+                        ? a.topPost.text.slice(0, 140) + "…"
+                        : a.topPost.text}
+                    </a>
+                  ) : (
+                    <span className="sf-account-top-empty">-</span>
+                  )}
+                </span>
+              </div>
+            ))}
+            {topAccounts.length > 20 && (
+              <div className="sf-accounts-more">
+                <button
+                  className="sf-btn ghost"
+                  onClick={() => setTopAccountsExpanded((v) => !v)}
+                >
+                  {topAccountsExpanded
+                    ? "Collapse to top 20"
+                    : `Show all ${topAccounts.length}`}
+                </button>
+              </div>
+            )}
+          </div>
+        )}
       </section>
 
     </div>

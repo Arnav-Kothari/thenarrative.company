@@ -1,0 +1,73 @@
+import fs from "node:fs";
+import path from "node:path";
+
+// Drop additional source-of-truth markdown files into /knowledge at the repo
+// root and they'll be concatenated into the system prompt for both scoring
+// and angle drafting. Replace the files to refresh the model's context -
+// no code change required.
+//
+// Current files:
+//   knowledge/messaging.md  - canonical messaging rules (terminology,
+//                             disallowed framings, alignment checklist)
+//   knowledge/audience.md   - Enterprise AI Navigator persona definitions
+//                             (who we're writing for)
+
+const KNOWLEDGE_DIR = path.join(process.cwd(), "knowledge");
+
+type CachedKnowledge = {
+  text: string;
+  loadedAt: number;
+};
+
+let cache: CachedKnowledge | null = null;
+const CACHE_TTL_MS = 60_000;
+
+function loadKnowledgeSync(): string {
+  let dirEntries: string[];
+  try {
+    dirEntries = fs.readdirSync(KNOWLEDGE_DIR);
+  } catch {
+    return "";
+  }
+
+  const mdFiles = dirEntries
+    .filter((f) => f.toLowerCase().endsWith(".md"))
+    .sort();
+
+  if (mdFiles.length === 0) return "";
+
+  const sections: string[] = [];
+  for (const file of mdFiles) {
+    try {
+      const full = path.join(KNOWLEDGE_DIR, file);
+      const body = fs.readFileSync(full, "utf8").trim();
+      if (!body) continue;
+      sections.push(`===== KNOWLEDGE: ${file} =====\n${body}`);
+    } catch {
+      // skip unreadable files silently
+    }
+  }
+
+  if (sections.length === 0) return "";
+
+  return [
+    "BACKGROUND KNOWLEDGE (source-of-truth context, authoritative):",
+    "The markdown sections below are Salesforce's canonical messaging and audience docs. Treat them as authoritative context when scoring posts or drafting replies. If guidance in this knowledge block conflicts with the rubric above, the rubric wins for output format; the knowledge wins for terminology, positioning, and audience calibration.",
+    "",
+    ...sections,
+  ].join("\n\n");
+}
+
+export function getKnowledge(): string {
+  const now = Date.now();
+  if (cache && now - cache.loadedAt < CACHE_TTL_MS) return cache.text;
+  const text = loadKnowledgeSync();
+  cache = { text, loadedAt: now };
+  return text;
+}
+
+export function withKnowledge(systemPrompt: string): string {
+  const k = getKnowledge();
+  if (!k) return systemPrompt;
+  return `${systemPrompt}\n\n${k}`;
+}

@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import Anthropic from "@anthropic-ai/sdk";
 import { DEFAULT_TONE } from "../_lib/tone";
+import { withKnowledge } from "../_lib/knowledge";
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
@@ -19,7 +20,7 @@ export async function POST(req: Request) {
     };
     tone?: string;
   };
-  const voice = tone || DEFAULT_TONE;
+  const voice = withKnowledge(tone || DEFAULT_TONE);
 
   const client = new Anthropic({ apiKey });
 

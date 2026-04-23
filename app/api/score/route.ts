@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import Anthropic from "@anthropic-ai/sdk";
 import { DEFAULT_RUBRIC } from "../_lib/rubric";
+import { withKnowledge } from "../_lib/knowledge";
 
 export const runtime = "nodejs";
 export const maxDuration = 300;
@@ -27,7 +28,7 @@ export async function POST(req: Request) {
 
   const body = (await req.json()) as { posts: Post[]; rubric?: string };
   const posts = body.posts ?? [];
-  const rubric = body.rubric ?? DEFAULT_RUBRIC;
+  const rubric = withKnowledge(body.rubric ?? DEFAULT_RUBRIC);
 
   const client = new Anthropic({ apiKey });
   const CONCURRENCY = 15;
