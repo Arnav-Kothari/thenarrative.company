@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Three Honest Notes for Marc - The Narrative Company</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #F6F1E9;
+    --bg-2: #EDE7DB;
+    --text: #15130E;
+    --text-2: #6B6157;
+    --text-3: #A39888;
+    --accent: #C96A2B;
+    --accent-dark: #B05A22;
+    --accent-glow: rgba(201,106,43,0.08);
+    --accent-border: rgba(201,106,43,0.28);
+    --warn: #B8564F;
+    --border: #DDD7CC;
+    --border-strong: #C9C2B5;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.55;
+    min-height: 100vh;
+  }
+
+  .container {
+    max-width: 840px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+
+  /* HEADER STRIP */
+  .top {
+    padding: 60px 0 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .logo {
+    position: relative; padding-top: 10px; display: inline-block;
+    font-size: 11px; font-weight: 400; letter-spacing: 0.32em; text-transform: uppercase; color: var(--text);
+  }
+  .logo::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: var(--accent); }
+  .top-meta {
+    font-size: 10px; color: var(--text-2); letter-spacing: 0.22em; text-transform: uppercase;
+    text-align: right; line-height: 1.8;
+  }
+
+  /* HEADLINE */
+  .headline-block {
+    padding: 80px 0 72px 0;
+  }
+  .eyebrow {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 20px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--accent); }
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 60px; font-weight: 400; line-height: 1.08;
+    letter-spacing: -0.015em;
+    max-width: 720px;
+    color: var(--text);
+  }
+  h1 em { font-style: italic; color: var(--accent); font-weight: 400; }
+  .subtitle {
+    margin-top: 32px;
+    font-size: 15px; font-weight: 300; color: var(--text-2);
+    line-height: 1.7; max-width: 620px;
+  }
+  .subtitle strong { color: var(--text); font-weight: 500; }
+
+  /* NOTES */
+  .note {
+    padding: 72px 0 68px 0;
+    border-top: 1px solid var(--border);
+  }
+  .note-num {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 26px; font-weight: 400; color: var(--accent);
+    letter-spacing: 0.02em; margin-bottom: 20px;
+  }
+  h2.note-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px; font-weight: 500; line-height: 1.14;
+    color: var(--text); max-width: 720px;
+    letter-spacing: -0.005em;
+  }
+  .note-evidence {
+    margin-top: 36px;
+    font-size: 15.5px; font-weight: 300; color: var(--text-2);
+    line-height: 1.78; max-width: 680px;
+  }
+  .note-evidence p + p { margin-top: 20px; }
+  .note-evidence strong { color: var(--text); font-weight: 500; }
+  .note-evidence .data { color: var(--accent); font-weight: 500; }
+
+  .note-do {
+    margin-top: 44px;
+    padding: 26px 30px 28px 30px;
+    background: var(--accent-glow);
+    border-left: 3px solid var(--accent);
+    max-width: 680px;
+  }
+  .note-do-label {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 10px;
+  }
+  .note-do-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 500; line-height: 1.3;
+    color: var(--text);
+  }
+
+  /* CLOSING */
+  .closing {
+    padding: 72px 0 32px 0;
+    border-top: 1px solid var(--border);
+  }
+  .closing-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 400; font-style: italic;
+    color: var(--text-2); line-height: 1.5;
+    max-width: 640px;
+  }
+  .closing-text strong { color: var(--text); font-weight: 500; font-style: normal; }
+
+  /* FOOTER */
+  .foot {
+    margin-top: 48px;
+    padding: 22px 0 60px 0;
+    border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between;
+    font-size: 9.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-3);
+  }
+  .foot .accent { color: var(--accent); }
+
+  @media (max-width: 720px) {
+    .container { padding: 0 28px; }
+    h1 { font-size: 42px; }
+    h2.note-title { font-size: 30px; }
+    .headline-block { padding: 56px 0 56px 0; }
+    .note { padding: 56px 0; }
+    .top { flex-direction: column; gap: 16px; }
+    .top-meta { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- HEADER -->
+    <div class="top">
+      <span class="logo">The Narrative Company</span>
+      <span class="top-meta">Internal notes &middot; For Marc Benioff<br>Mar 2026</span>
+    </div>
+
+    <!-- HEADLINE -->
+    <div class="headline-block">
+      <div class="eyebrow">Three honest notes</div>
+      <h1>If I could tell you three <em>true things</em> about your X, these are them.</h1>
+      <p class="subtitle">Not the polished deck. The version I'd give you if we were sitting at dinner. Every number here is from the Jan-Mar 2026 peer analysis, and every claim is something I'd defend to your face. <strong>Read it in that spirit.</strong></p>
+    </div>
+
+    <!-- NOTE 01 -->
+    <div class="note">
+      <div class="note-num">Note 01</div>
+      <h2 class="note-title">You post too much. That's the single biggest thing holding your reach back.</h2>
+      <div class="note-evidence">
+        <p>You posted <span class="data">4.2 times a week</span>. Pichai posted 2.8. Nadella posted 2.2. Your median reach was <span class="data">51K</span>. Pichai's was 347K. Nadella's was 682K. You are posting <strong>twice as often</strong> as the people beating you and pulling <strong>7x to 13x less reach</strong> for the effort.</p>
+        <p>This is not an audience problem. You have more followers than most people in the set. It's a frequency problem. Every extra post dilutes the signal of the one before it and trains both the algorithm and your audience to scroll past you. The posts are competing with each other instead of compounding.</p>
+        <p>This is the one lever where the data is unambiguous. Nothing else matters as much.</p>
+      </div>
+      <div class="note-do">
+        <div class="note-do-label">Do this</div>
+        <div class="note-do-text">Cut from 4.2 to 2 posts a week. Protect each one like it's the only shot this week.</div>
+      </div>
+    </div>
+
+    <!-- NOTE 02 -->
+    <div class="note">
+      <div class="note-num">Note 02</div>
+      <h2 class="note-title">Your engagement rate is last in the peer set. That's a writing problem, not a reach problem.</h2>
+      <div class="note-evidence">
+        <p>Your engagement rate was <span class="data">0.51%</span>. Last in the set. Bill McDermott, who posts twice a quarter and pulls 7K median views, runs at <span class="data">1.18%</span>. <strong>More than double yours.</strong></p>
+        <p>What that actually means: when people do see your posts, they engage with them less than they do with anyone else in the peer group. You can't fix that by getting more reach. The problem isn't who's seeing the post. The problem is what the post is.</p>
+        <p>The pattern is visible in the data. The posts that flatlined were congratulations, product news, and supportive retweets. The posts that spiked - <strong>"Impressive."</strong> on Figure 03, the SaaSpocalypse moment, your replies to founders in your mentions - had a point of view, a stake, a Marc-ism. People engage when they feel a specific person behind the keyboard, not a corporate account in a polo.</p>
+      </div>
+      <div class="note-do">
+        <div class="note-do-label">Do this</div>
+        <div class="note-do-text">Before you publish, ask: is there a take in here that only I can make? If no, it goes to @salesforce.</div>
+      </div>
+    </div>
+
+    <!-- NOTE 03 -->
+    <div class="note">
+      <div class="note-num">Note 03</div>
+      <h2 class="note-title">You're running your personal X like it's Salesforce's second PR channel. It shouldn't be.</h2>
+      <div class="note-evidence">
+        <p>Patrick Collison posts roughly every other week. <span class="data">0.5 posts a week.</span> He has <span class="data">78 high-value commenters</span> in this window - more than anyone else in the set by a factor of 2.6x. Your high-value commenter count is 30. Solid, but nowhere near.</p>
+        <p>The reason isn't his network. It's what he posts about. When Collison shows up, he says things most CEOs wouldn't bother saying: a question he's wrestling with, a book that rearranged his thinking, a pattern he's noticing in the economy. Those posts earn the founders, operators, and writers in the replies - and those people bring their friends.</p>
+        <p>You are the most recognizable CEO in SaaS. The rarest thing on X right now is a forty-year operator saying what they actually think about the future, the market, AI, the next wave, anything. That is a niche only you can fill. Every post you burn on a product launch or a customer shoutout is a post that isn't doing that work, and those launches and shoutouts have a perfectly good home on the Salesforce handle.</p>
+      </div>
+      <div class="note-do">
+        <div class="note-do-label">Do this</div>
+        <div class="note-do-text">Reserve the Benioff account for Benioff takes. Product wins, customer love, event promos all move to @salesforce.</div>
+      </div>
+    </div>
+
+    <!-- CLOSING -->
+    <div class="closing">
+      <p class="closing-text">These three notes compound. Post less, say something only you can say, and stop letting your personal account do corporate work. Do those three things and the reach, the engagement, and the right audience all move in the same direction. <strong>That's the whole play.</strong></p>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="foot">
+      <span><span class="accent">The Narrative Company</span> &middot; Internal to Marc</span>
+      <span>Source: X API &middot; Jan - Mar 2026</span>
+    </div>
+
+  </div>
+
+</body>
+</html>
