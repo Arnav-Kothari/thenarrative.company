@@ -1,5 +1,5 @@
 import type { CSSProperties } from "react";
-import Logo from "../components/Logo";
+import Logo from "@/components/Logo";
 
 // ─── Brand tokens (pulled straight from brand.html) ──
 const bg = "#F6F1E9";
